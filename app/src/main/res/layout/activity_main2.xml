@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.ordernow.Main2Activity">
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnquet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUẢN LÝ"
+            android:textColor="#d50000"
+            android:textSize="30dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold|italic"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="103dp"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            android:id="@+id/btnnhap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ORDER"
+            android:textColor="#ffea00"
+            android:textSize="30dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold|italic"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="167dp"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            android:id="@+id/btnds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ĐĂNG XUẤT"
+            android:textColor="#d500f9"
+            android:textSize="30dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold|italic"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="167dp"
+            android:background="@android:color/transparent"/>
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

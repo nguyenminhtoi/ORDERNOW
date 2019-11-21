@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffa939</color>
+    <color name="colorPrimaryDark">#ff9f03</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#ff9f03</color>
+    <color name="cardViewGrey">#E0E0E0</color>
+    <color name="cardViewGrey_tw">#f7f7f7</color>
+
+    <color name="colorGrey">#D2D2D2</color>
+    <color name="gray">#b3b3b3</color>
+    <color name="strong_text">#f26c4f</color>
+    <color name="orange_text">#fda738</color>
+    <color name="green_background">#8dd538</color>
+    <color name="item_extra_background">#f1f1f1</color>
+    <color name="red_color">#F44336</color>
+    <color name="red_light">#FFCDD2</color>
+    <color name="pink_color">#E91E63</color>
+    <color name="dark_pink">#880E4F</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white">#FFF</color>
+    <color name="purple_color">#9C27B0</color>
+    <color name="deep_purple_color">#673AB7</color>
+    <color name="indigo_color">#3F51B5</color>
+    <color name="blue_color">#2196F3</color>
+    <color name="blue_week">#1E88E5</color>
+    <color name="blue_light">#BBDEFB</color>
+    <color name="blue_deep">#0D47A1</color>
+    <color name="blue_select">#44626262</color>
+    <color name="orange_select">#f6c7a3</color>
+    <color name="blue_dark">#FF6F00</color>
+    <color name="light_blue_color">#03A9F4</color>
+    <color name="cyan_color">#00BCD4</color>
+    <color name="teal_color">#009688</color>
+    <color name="green_color">#4CAF50</color>
+    <color name="light_green_color">#8BC34A</color>
+    <color name="lime_color">#CDDC39</color>
+    <color name="yellow_color">#FFEB3B</color>
+    <color name="amber_color">#FFC107</color>
+    <color name="orange_color">#FF9800</color>
+    <color name="deep_orange_color">#FF5722</color>
+    <color name="brown_color">#795548</color>
+    <color name="grey_color">#9E9E9E</color>
+    <color name="color_status">#E0E0E0</color>
+    <color name="blue_grey_color">#607D8B</color>
+    <color name="black_color">#000000</color>
+    <color name="color_while">#ffffff</color>
+    <color name="color_while_deep">#E0E0E0</color>
+
+    <color name="button_payment_text">#636363</color>
+    <color name="background_dialog">#424242</color>
+    <color name="text_color">#424242</color>
+    <color name="text_color_black">#000</color>
+
+
+    <color name="colorControlNormal">#FF78909C</color>
+    <color name="colorControlActivated">#FF03A9F4</color>
+    <color name="colorSwitchThumbNormal">#FF78909C</color>
+
+    <color name="colorPrimaryQuarter">#3303A9F4</color>
+    <color name="colorPrimaryHalf">#9003A9F4</color>
+    <color name="colorControlNormalHalf">#9078909C</color>
+    <color name="colorControlActivatedHalf">#9003A9F4</color>
+    <color name="colorAccentQuarter">#3300E5FF</color>
+    <color name="colorAccentHalf">#9000E5FF</color>
+
+
+    <color name="tpi_checked">#FFFFFFFF</color>
+    <color name="tpi_unchecked">#99FFFFFF</color>
+
+    <color name="et_divider_focused">@color/colorControlActivated</color>
+    <color name="et_divider_not_focused">#FF6D6D6D</color>
+    <color name="et_divider_disable">#FFC1C1C1</color>
+
+    <color name="newreport_blue">#f09500</color>
+    <color name="newreport_line">#ffe3e3e3</color>
+    <color name="newreport_shift_sang">#A1887F</color>
+    <color name="newreport_shift_chieu">#80CBC4</color>
+    <color name="newreport_shift_toi">#F06292</color>
+
+    <color name="newreport_shift_mau1">#8D6E63</color>
+    <color name="newreport_shift_mau2">#8BC34A</color>
+    <color name="newreport_shift_mau3">#9003A9F4</color>
+    <color name="newreport_shift_mau4">#9E9D24</color>
+    <color name="newreport_shift_mau5">#FFC1C1C1</color>
+    <color name="newreport_shift_mau6">#FAEE35</color>
+    <color name="newreport_shift_mau7">#FF9800</color>
+    <color name="newreport_shift_mau8">#CDDC39</color>
+    <color name="newreport_shift_mau9">#AB47BC</color>
+    <color name="newreport_shift_mau10">#FF5722</color>
+    <color name="newreport_shift_mau11">#01579B</color>
+    <color name="newreport_shift_mau12">#757575</color>
+
+    <color name="fourty_percent">#ffff0000</color>
+    <color name="eighty_percent">#ffffa500</color>
+    <color name="one_hundred_percent">#ff0067be</color>
+    <color name="backgroud_color">#ffececec</color>
+    <color name="line">#ffe3e3e3</color>
+    <color name="selector_button_light">#ff0199fc</color>
+    <color name="newreport_background">#ffececec</color>
+    <color name="orders_report_total">#0D47A1</color>
+
+    <color name="text_total_transaction_blue">#0D47A1</color>
+    <color name="tab_color">#fee0b8</color>
+    <color name="tab_color_underline">#FFF</color>
+
+    <color name="recycler_view_bg">#ECECEC</color>
+    <color name="edit_text">#00ECECEC</color>
+    <color name="bg_search">#25ECECEC</color>
+
+    <color name="table_status_empty">#fff</color>
+    <color name="table_status_dirty">#bff93146</color>
+    <color name="table_status_cleaning">#c83553e8</color>
+    <color name="table_status_clean">#c886ea48</color>
+    <color name="table_status_check">#c8ffa939</color>
+    <color name="table_status_reserve">#c882311d</color>
+
+
+    <color name="bg_menu_sale">#8dd538</color>
+    <color name="bg_menu_kitchen_bar">#b377d9</color>
+    <color name="bg_menu_quick_service">#5c9ded</color>
+    <color name="bg_menu_report">#47cec0</color>
+    <color name="bg_menu_stock">#fab153</color>
+    <color name="bg_menu_receipt_payment">#b1b3b9</color>
+    <color name="bg_menu_setting">#ed5f55</color>
+    <color name="bg_menu_instruction">#bf8570</color>
+
+    <!-- Welcome Screens background color-->
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_dark_screen2">#14a895</color>
+    <color name="dot_dark_screen3">#2278d4</color>
+    <color name="dot_dark_screen4">#a854d4</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#f98da5</color>
+    <color name="dot_light_screen2">#8cf9eb</color>
+    <color name="dot_light_screen3">#93c6fd</color>
+    <color name="dot_light_screen4">#e4b5fc</color>
+
+</resources>
