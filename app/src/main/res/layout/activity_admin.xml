@@ -19,7 +19,19 @@
 
         </LinearLayout>
         <Button
-            android:id="@+id/btnquet"
+            android:id="@+id/btnDsBan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh sách bàn"
+            android:textColor="#2196F3"
+            android:textSize="30dp"
+            android:layout_margin="8dp"
+            android:textStyle="bold|italic"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="103dp"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/btnDsMon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Danh sách món"
@@ -32,7 +44,7 @@
             android:background="@android:color/transparent"/>
 
         <Button
-            android:id="@+id/btnnhap"
+            android:id="@+id/btnDsKhach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Khách hàng thân thiết"
@@ -56,7 +68,7 @@
             tools:layout_editor_absoluteY="167dp"
             android:background="@android:color/transparent"/>
         <Button
-            android:id="@+id/btnds"
+            android:id="@+id/btnDoanhThu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Doanh thu"
