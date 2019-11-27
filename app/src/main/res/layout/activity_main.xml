@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@styles/windowNoTitle"
     tools:context="com.example.administrator.ordernow.LoginActivity">
 
    <RelativeLayout
@@ -57,8 +56,8 @@
                   <ImageView
                       android:id="@+id/imageView"
                       android:layout_width="105dp"
-                      android:layout_height="75dp"
-                      android:background="@drawable/ic_gplx" />
+                      android:layout_height="90dp"
+                      android:background="@drawable/ic_ban" />
 
                   <TextView
                       android:layout_width="wrap_content"
@@ -66,7 +65,7 @@
                       android:layout_gravity="center"
                       android:text="Danh sách bàn"
                       android:textColor="@color/red_color"
-                      android:textSize="17dp" />
+                      android:textSize="15dp" />
                </LinearLayout>
 
                <LinearLayout
@@ -80,8 +79,8 @@
 
                   <ImageView
                       android:layout_width="105dp"
-                      android:layout_height="75dp"
-                      android:background="@drawable/ic_gplx" />
+                      android:layout_height="90dp"
+                      android:background="@drawable/ic_mon" />
 
                   <TextView
                       android:layout_width="wrap_content"
@@ -89,7 +88,7 @@
                       android:layout_gravity="center"
                       android:text="Danh sách món"
                       android:textColor="@color/red_color"
-                      android:textSize="17dp" />
+                      android:textSize="15dp" />
                </LinearLayout>
 
                <LinearLayout
@@ -98,23 +97,23 @@
                    android:layout_height="115dp"
                    android:layout_marginLeft="5dp"
                    android:background="@color/color_while"
+                   android:gravity="center"
                    android:orientation="vertical"
                    >
 
                   <ImageView
+                      android:id="@+id/imageView2"
                       android:layout_width="105dp"
-                      android:layout_height="75dp"
-                      android:layout_gravity="center"
-                      android:background="@drawable/ic_gplx"
-                       />
+                      android:layout_height="90dp"
+                      android:background="@drawable/ds_khach" />
 
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
-                      android:text="Danh sách khách hàng"
+                      android:text="Khách hàng"
                       android:textColor="@color/red_color"
-                      android:textSize="17dp" />
+                      android:textSize="15dp" />
 
 
                </LinearLayout>
@@ -132,15 +131,14 @@
                    android:layout_height="115dp"
                    android:layout_marginLeft="5dp"
                    android:background="@color/color_while"
+                   android:gravity="center"
                    android:orientation="vertical">
 
                   <ImageView
-                      android:layout_width="95dp"
-                      android:layout_height="80dp"
-                      android:layout_gravity="center"
-                      android:layout_marginTop="10dp"
-                      android:background="@drawable/ic_gplx"
-                      />
+                      android:id="@+id/imageView5"
+                      android:layout_width="105dp"
+                      android:layout_height="90dp"
+                      android:background="@drawable/ic_voucher" />
 
                   <TextView
                       android:id="@+id/textView"
@@ -158,21 +156,19 @@
                    android:layout_height="115dp"
                    android:layout_marginLeft="5dp"
                    android:background="@color/color_while"
+                   android:gravity="center"
                    android:orientation="vertical">
 
                   <ImageView
-                      android:layout_width="95dp"
-                      android:layout_height="80dp"
-                      android:layout_gravity="center"
-                      android:layout_marginTop="5dp"
-                      android:background="@drawable/ic_gplx"
-                      />
+                      android:id="@+id/imageView3"
+                      android:layout_width="105dp"
+                      android:layout_height="90dp"
+                      android:background="@drawable/doanh_so" />
 
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
-                      android:layout_marginTop="5dp"
                       android:text="Doanh thu"
                       android:textColor="@color/red_color"
                       android:textSize="16dp" />
@@ -183,25 +179,25 @@
                    android:layout_height="115dp"
                    android:layout_marginLeft="5dp"
                    android:background="@color/color_while"
+                   android:gravity="center"
                    android:orientation="vertical">
 
                   <ImageView
-                      android:layout_width="95dp"
-                      android:layout_height="80dp"
-                      android:layout_gravity="center"
-                      android:layout_marginTop="5dp"
+                      android:id="@+id/imageView4"
+                      android:layout_width="105dp"
+                      android:layout_height="90dp"
                       android:background="@drawable/ic_manager" />
 
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
-                      android:layout_marginTop="5dp"
                       android:text="Quản lý"
                       android:textColor="@color/red_color"
                       android:textSize="16dp" />
                </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
@@ -221,14 +217,13 @@
                   <ImageView
                       android:id="@+id/imageOrder"
                       android:layout_width="105dp"
-                      android:layout_height="75dp"
-                      android:background="@drawable/ic_gplx" />
+                      android:layout_height="90dp"
+                      android:background="@drawable/ds_ban"/>
 
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
-                      android:layout_marginTop="5dp"
                       android:text="Order"
                       android:textColor="@color/red_color"
                       android:textSize="16dp" />
