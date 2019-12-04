@@ -17,6 +17,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -107,9 +111,22 @@ public class LoginActivity extends AppCompatActivity {
         spinnerGT.setAdapter(adapterGT);
         spinnerNN.setAdapter(adapterCV);
         getData(urlGetData);
+        int permission_internet = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.INTERNET);
+        int permission_send_sms = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS);
+        int permission_camera = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA);
+
+        if (permission_internet != PackageManager.PERMISSION_GRANTED
+                || permission_send_sms != PackageManager.PERMISSION_GRANTED
+                || permission_camera != PackageManager.PERMISSION_GRANTED) {
+            makeRequest();
+        }
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getData(urlGetData);
                 for (int i = 0; i < arrayList.size(); i++) {
                     final NguoiDung nguoiDung = arrayList.get(i);
                     if (edtUser.getText().toString().equals(nguoiDung.getTAIKHOAN())) {
@@ -322,10 +339,16 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(LoginActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_LONG).show();
+                        Log.e("Volley", "Error");
+                        Toast.makeText(LoginActivity.this, "Lỗi kết nối sever!" + error, Toast.LENGTH_LONG).show();
                     }
                 }
         );
         requestQueue.add(jsonArrayRequest);
+    }
+
+    protected void makeRequest() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET,
+                Manifest.permission.SEND_SMS, Manifest.permission.CAMERA}, 1);
     }
 }
