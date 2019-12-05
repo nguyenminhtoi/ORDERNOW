@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        >
     <RelativeLayout
         android:id="@+id/viewInfoShop"
         android:padding="8dp"
@@ -66,7 +66,7 @@
             android:text="Quyền hạng: "
             android:textColor="@color/color_while"
             android:layout_below="@+id/viewInfoAccount"
-            android:layout_alignParentEnd="true" />
+            />
             <TextView
                 android:id="@+id/edt_quyen"
                 android:textStyle="bold"
@@ -77,7 +77,7 @@
                 android:text="Xem, sửa, thêm, xóa"
                 android:textColor="@color/color_while"
                 android:layout_below="@+id/viewInfoAccount"
-                android:layout_alignParentEnd="true" />
+                />
         </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
@@ -182,15 +182,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Số CMND: "
+                android:text="Tên cửa hàng: "
                 android:textSize="18dp"
                 android:textColor="@color/blue_deep"/>
             <EditText
-                android:id="@+id/edt_cmnd"
+                android:id="@+id/edt_name_store"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:text="381822213"
+                android:text="CAFE"
                 android:textColor="@color/strong_text"
                 android:textSize="18dp" />
 
@@ -210,7 +209,6 @@
                 android:id="@+id/edt_dia_chi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
                 android:text="Cần Thơ"
                 android:textColor="@color/strong_text"
                 android:textSize="18dp" />
@@ -271,32 +269,7 @@
 
                 />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nghề nghiệp: "
-                android:textSize="18dp"
-                android:textColor="@color/blue_deep"/>
-            <EditText
-                android:id="@+id/edt_nghe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:text="Nghề"
-                android:textColor="@color/strong_text"
-                android:textSize="18dp" />
-            <Spinner
-                android:id="@+id/spn_chuc_vu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                />
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

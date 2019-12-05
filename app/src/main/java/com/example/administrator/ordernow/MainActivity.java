@@ -82,16 +82,14 @@ public class MainActivity extends AppCompatActivity {
     EditText edtSdt;
     @Bind(R.id.edt_email)
     EditText edtEmail;
-    @Bind(R.id.edt_cmnd)
-    EditText edtCmnd;
+    @Bind(R.id.edt_name_store)
+    EditText edtNameStore;
     @Bind(R.id.edt_dia_chi)
     EditText edtDiaChi;
     @Bind(R.id.edt_quyen)
     TextView edtQuyen;
     @Bind(R.id.edt_gt)
     TextView edtGioiTinh;
-    @Bind(R.id.edt_nghe)
-    TextView edtNghe;
 
     @Bind(R.id.dashboard_drawer_layout)
     DrawerLayout mDrawerLayout;
@@ -100,8 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.spn_gioitinh)
     Spinner spinnerGT;
-    @Bind(R.id.spn_chuc_vu)
-    Spinner spinnerNN;
+
 
     boolean t;
     String id, user, pass, fullname, name_store, birthday, address, sex, phone, email, role, id_created;
@@ -113,11 +110,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         t = false;
         String [] gioitinh = {"Chọn giới tính","Nam", "Nữ"};
-        String [] chucvu = {"Chọn nghề nghiệp","Sinh viên","Bác sĩ","Kỹ sư","Lập trình viên","Giáo viên","Nhân vên văn phòng","Cảnh sát giao thông", "Khác"};
         ArrayAdapter<String> adapterGT = new ArrayAdapter<String>(this, R.layout.spinner_info, R.id.textSpin, gioitinh);
-        ArrayAdapter<String> adapterCV = new ArrayAdapter<String>(this, R.layout.spinner_info, R.id.textSpin, chucvu);
         spinnerGT.setAdapter(adapterGT);
-        spinnerNN.setAdapter(adapterCV);
         arrayList = new ArrayList<>();
         edtPass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         setEventClick();
@@ -145,12 +139,16 @@ public class MainActivity extends AppCompatActivity {
             edtPass.setText(pass);
             edtTen.setText(name_store);
             edtNgaySinh.setText(birthday);
-            edtCmnd.setText(name_store);
+            edtNameStore.setText(name_store);
             edtDiaChi.setText(address);
             edtSdt.setText(phone);
             edtEmail.setText(email);
-            edtGioiTinh.setText(sex);
-            edtNghe.setText(id_created);
+            if(sex.equals("1")){
+                edtGioiTinh.setText("Nam");
+            }
+            else {
+                edtGioiTinh.setText("Nữ");
+            }
 
             if(role.equals("2")){
                 edtQuyen.setText("Xem, thêm, sửa, xóa");
@@ -172,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
            edtTen.setFocusable(false);
            edtPass.setFocusable(false);
            edtNgaySinh.setFocusable(false);
-           edtCmnd.setFocusable(false);
+           edtNameStore.setFocusable(false);
            edtDiaChi.setFocusable(false);
            edtSdt.setFocusable(false);
            edtEmail.setFocusable(false);
@@ -203,16 +201,12 @@ public class MainActivity extends AppCompatActivity {
         imgUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (edtQuyen.equals("ADMIN")) {
-                    edtNghe.setVisibility(View.VISIBLE);
-                }else {
-                    edtNghe.setVisibility(View.GONE);
-                }
+
                 edtGioiTinh.setVisibility(View.GONE);
                 edtTen.setFocusableInTouchMode(true);
                 edtPass.setFocusableInTouchMode(true);
                 edtNgaySinh.setFocusableInTouchMode(true);
-                edtCmnd.setFocusableInTouchMode(true);
+                edtNameStore.setFocusableInTouchMode(true);
                 edtDiaChi.setFocusableInTouchMode(true);
                 edtSdt.setFocusableInTouchMode(true);
                 edtEmail.setFocusableInTouchMode(true);
@@ -284,51 +278,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String gt = (String) spinnerGT.getSelectedItem();
-                final String nghe = (String) spinnerNN.getSelectedItem();
                 if (edtPass.getText().toString().trim().equals("")
                         ||edtTen.getText().toString().trim().equals("")
                         ||edtNgaySinh.getText().toString().trim().equals("")
-                        ||edtCmnd.getText().toString().trim().equals("")
+                        ||edtNameStore.getText().toString().trim().equals("")
                         ||edtDiaChi.getText().toString().trim().equals("")
                         ||edtEmail.getText().toString().trim().equals("")
                         ||edtSdt.getText().toString().trim().equals("")
                         ||edtGioiTinh.getText().toString().trim().equals("")
-                        ||edtNghe.getText().toString().trim().equals("")
                         ) {
                     Toast.makeText(MainActivity.this, "Vui lòng không bỏ trống thông tin!", Toast.LENGTH_SHORT).show();
                 }else if(gt.equals("Chọn giới tính")){
                     Toast.makeText(MainActivity.this, "Vui lòng chọn giới tính!", Toast.LENGTH_SHORT).show();
-                }else if(nghe.equals("Chọn nghề nghiệp")){
-                    Toast.makeText(MainActivity.this, "Vui lòng chọn nghề nghiệp!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Update(urlUpdate);
                     edtTen.setFocusable(false);
                     edtPass.setFocusable(false);
                     edtNgaySinh.setFocusable(false);
-                    edtCmnd.setFocusable(false);
+                    edtNameStore.setFocusable(false);
                     edtDiaChi.setFocusable(false);
                     edtSdt.setFocusable(false);
                     edtEmail.setFocusable(false);
                     edtGioiTinh.setText(gt);
-                    edtNghe.setText(nghe);
-                    if(nghe.equals("Cảnh sát giao thông")){
-                        role = "2";
-                    }else {
-                        role = "3";
-                    }
+
                     SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences("login", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("pass", edtPass.getText().toString().trim());
                     editor.putString("ten", edtTen.getText().toString().trim());
                     editor.putString("ngaysinh", edtNgaySinh.getText().toString().trim());
-                    editor.putString("cmnd", edtCmnd.getText().toString().trim());
-                    editor.putString("diachi", edtCmnd.getText().toString().trim());
+                    editor.putString("namestore", edtNameStore.getText().toString().trim());
+                    editor.putString("diachi", edtDiaChi.getText().toString().trim());
                     editor.putString("gioitinh", gt);
                     editor.putString("sdt", edtSdt.getText().toString().trim());
-                    editor.putString("nghe", nghe);
                     editor.putString("email", edtEmail.getText().toString().trim());
-                    editor.putString("quyen", role);
                     editor.apply();
                     
                     if(role.equals("2")){
@@ -338,7 +321,6 @@ public class MainActivity extends AppCompatActivity {
                     }else {
                         edtQuyen.setText("ADMIN");
                     }
-                    edtNghe.setVisibility(View.VISIBLE);
                     edtGioiTinh.setVisibility(View.VISIBLE);
                 }
 
@@ -363,11 +345,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void Update(String url){
         final String gt = (String) spinnerGT.getSelectedItem();
-        final String nghe = (String) spinnerNN.getSelectedItem();
-        if(nghe.equals("Cảnh sát giao thông")){
-            role = "2";
+        if(gt.equals("Nam")){
+            sex = "1";
         }else {
-            role = "3";
+            sex = "0";
         }
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -377,7 +358,7 @@ public class MainActivity extends AppCompatActivity {
                         if (response.trim().equals("success")){
                             Toast.makeText(MainActivity.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(MainActivity.this, "cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -393,17 +374,17 @@ public class MainActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID", id);
-                params.put("TAIKHOAN", edtUser.getText().toString().trim());
-                params.put("MATKHAU", edtPass.getText().toString().trim());
-                params.put("TEN", edtTen.getText().toString().trim());
-                params.put("NGAYSINH", edtNgaySinh.getText().toString().trim());
-                params.put("DIACHI", edtDiaChi.getText().toString().trim());
-                params.put("CMND", edtCmnd.getText().toString().trim());
-                params.put("SDT", edtSdt.getText().toString().trim());
-                params.put("GIOITINH", gt);
-                params.put("NGHENGHIEP", nghe);
+                params.put("USER", edtUser.getText().toString().trim());
+                params.put("PASSWORD", edtPass.getText().toString().trim());
+                params.put("FULLNAME", edtTen.getText().toString().trim());
+                params.put("BIRTHDAY", edtNgaySinh.getText().toString().trim());
+                params.put("ADDRESS", edtDiaChi.getText().toString().trim());
+                params.put("NAME_STORE", edtNameStore.getText().toString().trim());
+                params.put("PHONE", edtSdt.getText().toString().trim());
+                params.put("SEX", sex);
                 params.put("EMAIL", edtEmail.getText().toString().trim());
-                params.put("QUYEN", role);
+                params.put("ROLE", role);
+                params.put("ID_CREATED", id_created);
                 return params;
             }
 

@@ -17,10 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -81,7 +78,8 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout lnLogin;
     @Bind(R.id.spn_gt)
     Spinner spinnerGT;
-    String pass, role, id_created;
+    String pass, role, id_created, sex;
+
     ArrayList<NguoiDung> arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,10 +108,9 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getData(urlGetData);
                 for (int i = 0; i < arrayList.size(); i++) {
                     final NguoiDung nguoiDung = arrayList.get(i);
-                    Toast.makeText(LoginActivity.this, nguoiDung.getUSER(), Toast.LENGTH_SHORT).show();
                     if (edtUser.getText().toString().equals(nguoiDung.getUSER())) {
                         pass = nguoiDung.getPASSWORD();
                         if (edtPass.getText().toString().equals(pass)) {
@@ -121,7 +118,6 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("log", "1");
                             editor.putString("id", String.valueOf(nguoiDung.getID()));
-                            id_created =String.valueOf( nguoiDung.getID());
                             editor.putString("user", nguoiDung.getUSER());
                             editor.putString("pass", nguoiDung.getPASSWORD());
                             editor.putString("fullname", nguoiDung.getFULLNAME());
@@ -204,6 +200,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else{
                     Them(urlInsert);
+                    getData(urlGetData);
                 }
             }
         });
@@ -241,8 +238,13 @@ public class LoginActivity extends AppCompatActivity {
         final String sdt = edtSDT.getText().toString().trim();
         final String email = edtEmail.getText().toString().trim();
         final String gt = (String) spinnerGT.getSelectedItem();
+        if(gt.equals("Nam")){
+            sex = "1";
+        }else {
+            sex = "0";
+        }
         role = "1";
-
+        id_created = "1";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -250,10 +252,10 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
                             Toast.makeText(LoginActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-//                            lnLogin.setVisibility(View.VISIBLE);
-//                            lnSign.setVisibility(View.GONE);
-//                            btnReturnLogin.setVisibility(View.GONE);
-//                            btnCreate.setVisibility(View.GONE);
+                            lnLogin.setVisibility(View.VISIBLE);
+                            lnSign.setVisibility(View.GONE);
+                            btnReturnLogin.setVisibility(View.GONE);
+                            btnCreate.setVisibility(View.GONE);
                         }else {
                             Toast.makeText(LoginActivity.this, "Đăng ký không thành công!", Toast.LENGTH_SHORT).show();
                         }
@@ -277,10 +279,10 @@ public class LoginActivity extends AppCompatActivity {
                 params.put("ADDRESS", diachi);
                 params.put("NAME_STORE", nameStore);
                 params.put("PHONE", sdt);
-                params.put("SEX", gt);
+                params.put("SEX", sex);
                 params.put("EMAIL", email);
                 params.put("ROLE", role);
-                params.put("ID_CREATED", role);
+                params.put("ID_CREATED", id_created);
                 return params;
             }
         };
