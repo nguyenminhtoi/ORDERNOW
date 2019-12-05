@@ -299,12 +299,11 @@ tools:context="com.example.administrator.ordernow.LoginActivity">
                         android:layout_toRightOf="@+id/imgCMND">
 
                         <EditText
-                            android:id="@+id/edt_login_cmnd"
+                            android:id="@+id/edt_name_store"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Số CMND"
+                            android:hint="Tên cửa hàng"
                             android:imeOptions="actionDone"
-                            android:inputType="number"
                             android:maxLines="2" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -316,7 +315,7 @@ tools:context="com.example.administrator.ordernow.LoginActivity">
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
                         android:padding="8dp"
-                        android:src="@drawable/ic_id" />
+                        android:src="@drawable/ic_shop" />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -440,39 +439,6 @@ tools:context="com.example.administrator.ordernow.LoginActivity">
                         android:layout_height="40dp"
                         android:padding="8dp"
                         android:src="@drawable/ic_gt" />
-
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_create_order">
-
-                    <Spinner
-                        android:id="@+id/spn_nghe"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_toRightOf="@+id/imgCV" />
-
-                    <!-- ICON -->
-                    <ImageView
-                        android:id="@+id/imgCV"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_centerVertical="true"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_job" />
 
                 </RelativeLayout>
             </LinearLayout>

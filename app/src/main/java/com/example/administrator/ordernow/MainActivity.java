@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinnerNN;
 
     boolean t;
-    String id, ac, pass, ten, ngaysinh, cmnd, diachi, gt, sdt, nghe, email,quyen;
+    String id, user, pass, fullname, name_store, birthday, address, sex, phone, email, role, id_created;
     ArrayList<NguoiDung> arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,32 +129,32 @@ public class MainActivity extends AppCompatActivity {
         if(sharedPreferences!= null) {
             String login = sharedPreferences.getString("log", "90");
             id = sharedPreferences.getString("id", "90");
-            ac = sharedPreferences.getString("ac", "90");
+            user = sharedPreferences.getString("user", "90");
             pass = sharedPreferences.getString("pass", "90");
-            ten = sharedPreferences.getString("ten", "90");
-            ngaysinh = sharedPreferences.getString("ngaysinh", "90");
-            cmnd = sharedPreferences.getString("cmnd", "90");
-            diachi = sharedPreferences.getString("diachi", "90");
-            gt = sharedPreferences.getString("gioitinh", "90");
-            sdt = sharedPreferences.getString("sdt", "90");
-            nghe = sharedPreferences.getString("nghe", "90");
+            fullname = sharedPreferences.getString("fullname", "90");
+            name_store = sharedPreferences.getString("name_store", "90");
+            birthday = sharedPreferences.getString("birthday", "90");
+            address = sharedPreferences.getString("address", "90");
+            sex = sharedPreferences.getString("sex", "90");
+            phone = sharedPreferences.getString("phone", "90");
             email = sharedPreferences.getString("email", "90");
-            quyen = sharedPreferences.getString("quyen", "90");
+            role = sharedPreferences.getString("role", "90");
+            id_created = sharedPreferences.getString("id_created", "90");
 
-            edtUser.setText(ac);
+            edtUser.setText(user);
             edtPass.setText(pass);
-            edtTen.setText(ten);
-            edtNgaySinh.setText(ngaysinh);
-            edtCmnd.setText(cmnd);
-            edtDiaChi.setText(diachi);
-            edtSdt.setText(sdt);
+            edtTen.setText(name_store);
+            edtNgaySinh.setText(birthday);
+            edtCmnd.setText(name_store);
+            edtDiaChi.setText(address);
+            edtSdt.setText(phone);
             edtEmail.setText(email);
-            edtGioiTinh.setText(gt);
-            edtNghe.setText(nghe);
+            edtGioiTinh.setText(sex);
+            edtNghe.setText(id_created);
 
-            if(quyen.equals("2")){
+            if(role.equals("2")){
                 edtQuyen.setText("Xem, thêm, sửa, xóa");
-            }else if(quyen.equals("3")){
+            }else if(role.equals("3")){
                 edtQuyen.setText("Chỉ xem");
             }else {
                 edtQuyen.setText("ADMIN");
@@ -313,9 +313,9 @@ public class MainActivity extends AppCompatActivity {
                     edtGioiTinh.setText(gt);
                     edtNghe.setText(nghe);
                     if(nghe.equals("Cảnh sát giao thông")){
-                        quyen = "2";
+                        role = "2";
                     }else {
-                        quyen = "3";
+                        role = "3";
                     }
                     SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences("login", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -328,12 +328,12 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("sdt", edtSdt.getText().toString().trim());
                     editor.putString("nghe", nghe);
                     editor.putString("email", edtEmail.getText().toString().trim());
-                    editor.putString("quyen", quyen);
+                    editor.putString("quyen", role);
                     editor.apply();
                     
-                    if(quyen.equals("2")){
+                    if(role.equals("2")){
                         edtQuyen.setText("Xem, thêm, sửa, xóa");
-                    }else if(quyen.equals("3")){
+                    }else if(role.equals("3")){
                         edtQuyen.setText("Chỉ xem");
                     }else {
                         edtQuyen.setText("ADMIN");
@@ -365,9 +365,9 @@ public class MainActivity extends AppCompatActivity {
         final String gt = (String) spinnerGT.getSelectedItem();
         final String nghe = (String) spinnerNN.getSelectedItem();
         if(nghe.equals("Cảnh sát giao thông")){
-            quyen = "2";
+            role = "2";
         }else {
-            quyen = "3";
+            role = "3";
         }
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -403,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
                 params.put("GIOITINH", gt);
                 params.put("NGHENGHIEP", nghe);
                 params.put("EMAIL", edtEmail.getText().toString().trim());
-                params.put("QUYEN", quyen);
+                params.put("QUYEN", role);
                 return params;
             }
 

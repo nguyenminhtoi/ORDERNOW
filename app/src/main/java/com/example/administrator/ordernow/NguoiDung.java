@@ -4,49 +4,53 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+import static android.R.attr.id;
+import static android.R.attr.password;
+import static android.os.Build.ID;
+
 /**
  * Created by MINH TOI on 20/01/2018.
  */
 
 public class NguoiDung implements Serializable {
-    @SerializedName("ID")
+    @SerializedName("id")
     private int ID;
-    @SerializedName("TAIKHOAN")
-    private String TAIKHOAN;
-    @SerializedName("MATKHAU")
-    private String MATKHAU;
-    @SerializedName("TEN")
-    private String TEN;
-    @SerializedName("NGAYSINH")
-    private String NGAYSINH;
-    @SerializedName("CMND")
-    private String CMND;
-    @SerializedName("DIACHI")
-    private String DIACHI;
-    @SerializedName("GIOITINH")
-    private String GIOITINH;
-    @SerializedName("SDT")
-    private String SDT;
-    @SerializedName("NGHENGHIEP")
-    private String NGHENGHIEP;
+    @SerializedName("USER")
+    private String USER;
+    @SerializedName("PASSWORD")
+    private String PASSWORD;
+    @SerializedName("FULLNAME")
+    private String FULLNAME;
+    @SerializedName("NAME_STORE")
+    private String NAME_STORE;
+    @SerializedName("BIRTHDAY")
+    private String BIRTHDAY;
+    @SerializedName("ADDRESS")
+    private String ADDRESS;
+    @SerializedName("SEX")
+    private int SEX;
+    @SerializedName("PHONE")
+    private int PHONE;
     @SerializedName("EMAIL")
     private String EMAIL;
-    @SerializedName("QUYEN")
-    private String QUYEN;
+    @SerializedName("ROLE")
+    private int ROLE;
+    @SerializedName("ID_CREATED")
+    private int ID_CREATED;
 
-    public NguoiDung(int ID, String TAIKHOAN, String MATKHAU, String TEN, String NGAYSINH, String CMND, String DIACHI, String GIOITINH, String SDT, String NGHENGHIEP, String EMAIL, String QUYEN) {
+    public NguoiDung(int ID, String USER, String PASSWORD, String FULLNAME, String NAME_STORE, String BIRTHDAY, String ADDRESS, int SEX, int PHONE, String EMAIL, int ROLE, int ID_CREATED) {
         this.ID = ID;
-        this.TAIKHOAN = TAIKHOAN;
-        this.MATKHAU = MATKHAU;
-        this.TEN = TEN;
-        this.NGAYSINH = NGAYSINH;
-        this.CMND = CMND;
-        this.DIACHI = DIACHI;
-        this.GIOITINH = GIOITINH;
-        this.SDT = SDT;
-        this.NGHENGHIEP = NGHENGHIEP;
+        this.USER = USER;
+        this.PASSWORD = PASSWORD;
+        this.FULLNAME = FULLNAME;
+        this.NAME_STORE = NAME_STORE;
+        this.BIRTHDAY = BIRTHDAY;
+        this.ADDRESS = ADDRESS;
+        this.SEX = SEX;
+        this.PHONE = PHONE;
         this.EMAIL = EMAIL;
-        this.QUYEN = QUYEN;
+        this.ROLE = ROLE;
+        this.ID_CREATED = ID_CREATED;
     }
 
     public int getID() {
@@ -56,68 +60,61 @@ public class NguoiDung implements Serializable {
     public void setID(int ID) {
         this.ID = ID;
     }
-    public String getTAIKHOAN() {
-        return TAIKHOAN;
+    public String getUSER() {
+        return USER;
     }
 
-    public void setTAIKHOAN(String TAIKHOAN) {
-        this.TAIKHOAN = TAIKHOAN;
+    public void setUSER(String USER) {
+        this.USER = USER;
     }
-    public String getMATKHAU() {
-        return MATKHAU;
-    }
-
-    public void setMATKHAU(String MATKHAU) {
-        this.MATKHAU = MATKHAU;
-    }
-    public String getTEN() {
-        return TEN;
+    public String getPASSWORD() {
+        return PASSWORD;
     }
 
-    public void setTEN(String TEN) {
-        this.TEN = TEN;
+    public void setPASSWORD(String PASSWORD) {
+        this.PASSWORD = PASSWORD;
     }
-    public String getNGAYSINH() {
-        return NGAYSINH;
-    }
-
-    public void setNGAYSINH(String NGAYSINH) {
-        this.NGAYSINH = NGAYSINH;
-
-    }public String getCMND() {
-        return CMND;
+    public String getFULLNAME() {
+        return FULLNAME;
     }
 
-    public void setCMND(String CMND) {
-        this.ID = ID;
-
-    }public String getDIACHI() {
-        return DIACHI;
+    public void setFULLNAME(String FULLNAME) {
+        this.FULLNAME = FULLNAME;
+    }
+    public String getNAME_STORE() {
+        return NAME_STORE;
     }
 
-    public void setDIACHI(String DIACHI) {
-        this.DIACHI = DIACHI;
+    public void setNAME_STORE(String NAME_STORE) {
+        this.NAME_STORE = NAME_STORE;
 
-    }public String getGIOITINH() {
-        return GIOITINH;
-    }
-
-    public void setGIOITINH(String GIOITINH) {
-        this.GIOITINH = GIOITINH;
-    }
-    public String getSDT() {
-        return SDT;
+    }public String getBIRTHDAY() {
+        return BIRTHDAY;
     }
 
-    public void setSDT(String SDT) {
-        this.SDT = SDT;
-    }
-    public String getNGHENGHIEP() {
-        return NGHENGHIEP;
+    public void setBIRTHDAY(String BIRTHDAY) {
+        this.BIRTHDAY = BIRTHDAY;
+
+    }public String getADDRESS() {
+        return ADDRESS;
     }
 
-    public void setNGHENGHIEP(String NGHENGHIEP) {
-        this.NGHENGHIEP = NGHENGHIEP;
+    public void setADDRESS(String ADDRESS) {
+        this.ADDRESS = ADDRESS;
+
+    }public int getSEX() {
+        return SEX;
+    }
+
+    public void setSEX(int SEX) {
+        this.SEX = SEX;
+    }
+    public int getPHONE() {
+        return PHONE;
+    }
+
+    public void setPHONE(int PHONE) {
+        this.PHONE = PHONE;
     }
     public String getEMAIL() {
         return EMAIL;
@@ -126,11 +123,18 @@ public class NguoiDung implements Serializable {
     public void setEMAIL(String EMAIL) {
         this.EMAIL = EMAIL;
     }
-    public String getQUYEN() {
-        return QUYEN;
+    public int getROLE() {
+        return ROLE;
     }
 
-    public void setQUYEN(String QUYEN) {
-        this.QUYEN = QUYEN;
+    public void setROLE(int ROLE) {
+        this.ROLE = ROLE;
+    }
+    public int getID_CREATED() {
+        return ID_CREATED;
+    }
+
+    public void setID_CREATED(int ID_CREATED) {
+        this.ID_CREATED = ID_CREATED;
     }
 }
