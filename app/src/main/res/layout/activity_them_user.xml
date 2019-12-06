@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cyan_color"
+    tools:context="com.example.administrator.ordernow.ThemUserActivity">
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_create_order">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/imgAccount">
+
+                        <EditText
+                            android:id="@+id/edt_update_username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Tài khoản"
+                            android:imeOptions="actionDone"
+                            android:maxLines="2" />
+                    </android.support.design.widget.TextInputLayout>
+                    <!-- ICON -->
+                    <ImageView
+                        android:id="@+id/imgAccount"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_username_login" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_create_order">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/imgPass">
+
+                        <EditText
+                            android:id="@+id/edt_update_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:hint="Mật khẩu"
+                            android:imeOptions="actionDone"
+                            android:maxLines="2" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imgPass"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_password_login" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_create_order">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/imgName">
+
+                            <EditText
+                                android:id="@+id/edt_update_ten"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Họ tên"
+                                android:imeOptions="actionDone"
+                                android:maxLines="2" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <!-- ICON -->
+                        <ImageView
+                            android:id="@+id/imgName"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_name" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_create_order">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/imgNgaySinh">
+
+                            <EditText
+                                android:id="@+id/edt_update_ngay_sinh"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:hint="Ngày sinh"
+                                android:imeOptions="actionDone"
+                                android:inputType="datetime"
+                                android:maxLines="2" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <!-- ICON -->
+                        <ImageView
+                            android:id="@+id/imgNgaySinh"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_calendar" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_create_order">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/imgDiaChi">
+
+                            <EditText
+                                android:id="@+id/edt_update_dia_chi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Địa chỉ"
+                                android:imeOptions="actionDone"
+                                android:maxLines="2" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <!-- ICON -->
+                        <ImageView
+                            android:id="@+id/imgDiaChi"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_address" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_create_order">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:layout_toRightOf="@+id/dauso">
+
+                            <EditText
+                                android:id="@+id/edt_update_sdt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Số điện thoại"
+                                android:imeOptions="actionDone"
+                                android:inputType="phone"
+                                android:maxLines="2" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <!-- ICON -->
+                        <TextView
+                            android:id="@+id/dauso"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:layout_toRightOf="@+id/imgSDT"
+                            android:text="(+84)"
+                            android:textColor="@color/red_color"
+                            android:textSize="16dp" />
+
+                        <ImageView
+                            android:id="@+id/imgSDT"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_phone" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_create_order">
+
+                        <Spinner
+                            android:id="@+id/spn_gt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/imgGT" />
+
+                        <!-- ICON -->
+                        <ImageView
+                            android:id="@+id/imgGT"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_gt" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_create_order">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/imgEmail">
+
+                            <EditText
+                                android:id="@+id/edt_update_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Email"
+                                android:imeOptions="actionDone"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="2" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <!-- ICON -->
+                        <ImageView
+                            android:id="@+id/imgEmail"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="12dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_email" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_insert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/drawable_btn_create_account"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="Thêm Account"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_huy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/drawable_btn_login"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="Hủy"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"></LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

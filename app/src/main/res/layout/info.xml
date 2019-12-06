@@ -38,13 +38,13 @@
                 android:layout_height="48dp" />
             <EditText
                 android:layout_centerInParent="true"
-                android:id="@+id/edt_ten"
+                android:id="@+id/edt_name_store"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:text="Nguyễn Minh Tới"
+                android:text="CF"
                 android:textColor="@color/color_while"/>
             <ImageView
                 android:id="@+id/imgUpdate"
@@ -182,14 +182,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên cửa hàng: "
+                android:text="Chủ cửa hàng: "
                 android:textSize="18dp"
                 android:textColor="@color/blue_deep"/>
             <EditText
-                android:id="@+id/edt_name_store"
+                android:id="@+id/edt_fullname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CAFE"
+                android:text="Nguyễn Minh Tới"
                 android:textColor="@color/strong_text"
                 android:textSize="18dp" />
 

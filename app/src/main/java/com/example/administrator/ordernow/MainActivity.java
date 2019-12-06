@@ -39,7 +39,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    String urlUpdate = "http://minhtoi96.me/quanlyaccount/update.php";
+    String urlUpdate = "http://minhtoi96.me/order/user/update.php";
     @Bind(R.id.ds_ban)
     LinearLayout lnDsBan;
     @Bind(R.id.ds_mon)
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edtUser;
     @Bind(R.id.edt_pass)
     EditText edtPass;
-    @Bind(R.id.edt_ten)
+    @Bind(R.id.edt_fullname)
     EditText edtTen;
     @Bind(R.id.edt_ngaysinh)
     EditText edtNgaySinh;
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
             edtUser.setText(user);
             edtPass.setText(pass);
-            edtTen.setText(name_store);
+            edtTen.setText(fullname);
             edtNgaySinh.setText(birthday);
             edtNameStore.setText(name_store);
             edtDiaChi.setText(address);
@@ -252,7 +252,8 @@ public class MainActivity extends AppCompatActivity {
         lnQuanLy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, QuanLyUserActivity.class);
+                startActivity(intent);
             }
         });
         lnOrder.setOnClickListener(new View.OnClickListener() {
@@ -315,11 +316,9 @@ public class MainActivity extends AppCompatActivity {
                     editor.apply();
                     
                     if(role.equals("2")){
-                        edtQuyen.setText("Xem, thêm, sửa, xóa");
-                    }else if(role.equals("3")){
                         edtQuyen.setText("Chỉ xem");
                     }else {
-                        edtQuyen.setText("ADMIN");
+                        edtQuyen.setText("Quản lý");
                     }
                     edtGioiTinh.setVisibility(View.VISIBLE);
                 }
@@ -350,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
         }else {
             sex = "0";
         }
+        Toast.makeText(MainActivity.this, id +  " " + sex , Toast.LENGTH_SHORT).show();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -374,7 +374,6 @@ public class MainActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID", id);
-                params.put("USER", edtUser.getText().toString().trim());
                 params.put("PASSWORD", edtPass.getText().toString().trim());
                 params.put("FULLNAME", edtTen.getText().toString().trim());
                 params.put("BIRTHDAY", edtNgaySinh.getText().toString().trim());
@@ -383,8 +382,6 @@ public class MainActivity extends AppCompatActivity {
                 params.put("PHONE", edtSdt.getText().toString().trim());
                 params.put("SEX", sex);
                 params.put("EMAIL", edtEmail.getText().toString().trim());
-                params.put("ROLE", role);
-                params.put("ID_CREATED", id_created);
                 return params;
             }
 
