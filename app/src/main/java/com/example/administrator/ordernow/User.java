@@ -12,7 +12,7 @@ import static android.os.Build.ID;
  * Created by MINH TOI on 20/01/2018.
  */
 
-public class NguoiDung implements Serializable {
+public class User implements Serializable {
     @SerializedName("id")
     private int ID;
     @SerializedName("USER")
@@ -38,7 +38,7 @@ public class NguoiDung implements Serializable {
     @SerializedName("ID_CREATED")
     private int ID_CREATED;
 
-    public NguoiDung(int ID, String USER, String PASSWORD, String FULLNAME, String NAME_STORE, String BIRTHDAY, String ADDRESS, int SEX, int PHONE, String EMAIL, int ROLE, int ID_CREATED) {
+    public User(int ID, String USER, String PASSWORD, String FULLNAME, String NAME_STORE, String BIRTHDAY, String ADDRESS, int SEX, int PHONE, String EMAIL, int ROLE, int ID_CREATED) {
         this.ID = ID;
         this.USER = USER;
         this.PASSWORD = PASSWORD;

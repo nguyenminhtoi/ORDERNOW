@@ -33,7 +33,7 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ThemUserActivity extends AppCompatActivity {
+public class InserUserActivity extends AppCompatActivity {
     String urlInsert = "http://minhtoi96.me/order/user/Insert.php";
 
     @Bind(R.id.tv_title_ql)
@@ -58,7 +58,6 @@ public class ThemUserActivity extends AppCompatActivity {
 
     @Bind(R.id.spn_gt)
     Spinner spinnerGT;
-    Spinner spinnerNN;
 
     @Bind(R.id.btn_insert)
     Button btnInsert;
@@ -83,6 +82,8 @@ public class ThemUserActivity extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(InserUserActivity.this, ManagerUserActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -104,13 +105,13 @@ public class ThemUserActivity extends AppCompatActivity {
                         ||edtEmail.getText().toString().trim().equals("")
                         ||edtSDT.getText().toString().trim().equals("")
                         ){
-                    Toast.makeText(ThemUserActivity.this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InserUserActivity.this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show();
                 }else if(gt.equals("Chọn giới tính")){
-                    Toast.makeText(ThemUserActivity.this, "Vui lòng chọn giới tính!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InserUserActivity.this, "Vui lòng chọn giới tính!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Them(urlInsert);
-                    Intent intent = new Intent(ThemUserActivity.this, QuanLyUserActivity.class);
+                    Intent intent = new Intent(InserUserActivity.this, ManagerUserActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -153,23 +154,23 @@ public class ThemUserActivity extends AppCompatActivity {
             nameStore = sharedPreferences.getString("name_store", "90");
         }
         role = "2";
-        Toast.makeText(ThemUserActivity.this, id_created + " " + nameStore + ' ' + role + "" + sex , Toast.LENGTH_LONG).show();
+        Toast.makeText(InserUserActivity.this, id_created + " " + nameStore + ' ' + role + "" + sex , Toast.LENGTH_LONG).show();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(ThemUserActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(InserUserActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(ThemUserActivity.this, "Đăng ký không thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(InserUserActivity.this, "Đăng ký không thành công!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ThemUserActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InserUserActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
                         Log.d("A", "Error!\n" + error.toString());
                     }
                 }

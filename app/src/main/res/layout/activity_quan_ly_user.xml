@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/cyan_color"
-    tools:context="com.example.administrator.ordernow.QuanLyUserActivity">
+    tools:context="com.example.administrator.ordernow.ManagerUserActivity">
     <include layout="@layout/toolbar_quan_ly" />
 
     <ListView

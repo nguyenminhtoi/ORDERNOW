@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cyan_color"
-    tools:context="com.example.administrator.ordernow.ThemUserActivity">
+    tools:context="com.example.administrator.ordernow.InserUserActivity">
     <include layout="@layout/toolbar" />
 
     <ScrollView

@@ -34,8 +34,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".QuanLyUserActivity" />
-        <activity android:name=".ThemUserActivity"></activity>
+        <activity android:name=".ManagerUserActivity" />
+        <activity android:name=".InserUserActivity"></activity>
     </application>
 
 </manifest>

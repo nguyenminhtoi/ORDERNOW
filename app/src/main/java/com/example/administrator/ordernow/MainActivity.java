@@ -1,6 +1,5 @@
 package com.example.administrator.ordernow;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean t;
     String id, user, pass, fullname, name_store, birthday, address, sex, phone, email, role, id_created;
-    ArrayList<NguoiDung> arrayList;
+    ArrayList<User> arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -252,8 +251,13 @@ public class MainActivity extends AppCompatActivity {
         lnQuanLy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, QuanLyUserActivity.class);
-                startActivity(intent);
+                if(role.equals("1")){
+                    Intent intent = new Intent(MainActivity.this, ManagerUserActivity.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         lnOrder.setOnClickListener(new View.OnClickListener() {

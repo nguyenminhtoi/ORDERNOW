@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
     Spinner spinnerGT;
     String pass, role, id_created, sex;
 
-    ArrayList<NguoiDung> arrayList;
+    ArrayList<User> arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,25 +110,25 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 getData(urlGetData);
                 for (int i = 0; i < arrayList.size(); i++) {
-                    final NguoiDung nguoiDung = arrayList.get(i);
-                    if (edtUser.getText().toString().equals(nguoiDung.getUSER())) {
-                        pass = nguoiDung.getPASSWORD();
+                    final User user = arrayList.get(i);
+                    if (edtUser.getText().toString().equals(user.getUSER())) {
+                        pass = user.getPASSWORD();
                         if (edtPass.getText().toString().equals(pass)) {
                             SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("login", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("log", "1");
-                            editor.putString("id", String.valueOf(nguoiDung.getID()));
-                            editor.putString("user", nguoiDung.getUSER());
-                            editor.putString("pass", nguoiDung.getPASSWORD());
-                            editor.putString("fullname", nguoiDung.getFULLNAME());
-                            editor.putString("name_store", nguoiDung.getNAME_STORE());
-                            editor.putString("birthday", nguoiDung.getBIRTHDAY());
-                            editor.putString("address", nguoiDung.getADDRESS());
-                            editor.putString("sex", String.valueOf(nguoiDung.getSEX()));
-                            editor.putString("phone", String.valueOf(nguoiDung.getPHONE()));
-                            editor.putString("email", nguoiDung.getEMAIL());
-                            editor.putString("role", String.valueOf(nguoiDung.getROLE()));
-                            editor.putString("id_created", String.valueOf(nguoiDung.getID_CREATED()));
+                            editor.putString("id", String.valueOf(user.getID()));
+                            editor.putString("user", user.getUSER());
+                            editor.putString("pass", user.getPASSWORD());
+                            editor.putString("fullname", user.getFULLNAME());
+                            editor.putString("name_store", user.getNAME_STORE());
+                            editor.putString("birthday", user.getBIRTHDAY());
+                            editor.putString("address", user.getADDRESS());
+                            editor.putString("sex", String.valueOf(user.getSEX()));
+                            editor.putString("phone", String.valueOf(user.getPHONE()));
+                            editor.putString("email", user.getEMAIL());
+                            editor.putString("role", String.valueOf(user.getROLE()));
+                            editor.putString("id_created", String.valueOf(user.getID_CREATED()));
                             if (checkBox.isChecked()) {
                                 editor.putString("cbx", "1");
                             } else {
@@ -297,7 +297,7 @@ public class LoginActivity extends AppCompatActivity {
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject object = response.getJSONObject(i);
-                                arrayList.add(new NguoiDung(
+                                arrayList.add(new User(
                                         object.getInt("ID"),
                                         object.getString("USER"),
                                         object.getString("PASSWORD"),

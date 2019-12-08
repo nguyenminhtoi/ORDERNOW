@@ -32,9 +32,7 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static android.R.attr.id;
-
-public class QuanLyUserActivity extends AppCompatActivity {
+public class ManagerUserActivity extends AppCompatActivity {
     String urlGetData = "http://minhtoi96.me/order/user/user.php";
     String urlXoa = "http://minhtoi96.me/order/user/delete.php";
     @Bind(R.id.tv_title_ql)
@@ -46,7 +44,7 @@ public class QuanLyUserActivity extends AppCompatActivity {
     @Bind(R.id.lvNguoiDung)
     ListView list;
     ArrayList<MangerUser> arrayList;
-    NguoiDungAdapter adapter;
+    UserAdapter adapter;
     String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +53,7 @@ public class QuanLyUserActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         tvTitle.setText("Quản lý Account");
         arrayList = new ArrayList<>();
-        adapter = new NguoiDungAdapter(this, R.layout.nguoidung, arrayList);
+        adapter = new UserAdapter(this, R.layout.nguoidung, arrayList);
         list.setAdapter(adapter);
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
@@ -71,22 +69,23 @@ public class QuanLyUserActivity extends AppCompatActivity {
         imgAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(QuanLyUserActivity.this, ThemUserActivity.class);
+                Intent intent = new Intent(ManagerUserActivity.this, InserUserActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
     private void GetData(final int id){
-        final RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, urlGetData, null,
-                new Response.Listener<JSONArray>() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlGetData,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(String response) {
                         arrayList.clear();
                         for (int i = 0; i < response.length(); i++) {
                             try {
-                                JSONObject object = response.getJSONObject(i);
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject object = jsonArray.getJSONObject(i);
                                 arrayList.add(new MangerUser(
                                         object.getInt("ID"),
                                         object.getString("USER"),
@@ -111,7 +110,7 @@ public class QuanLyUserActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(QuanLyUserActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManagerUserActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_SHORT).show();
                     }
                 }
         ){
@@ -123,7 +122,7 @@ public class QuanLyUserActivity extends AppCompatActivity {
             }
 
         };
-        requestQueue.add(jsonArrayRequest);
+        requestQueue.add(stringRequest);
     }
     public void Delete(final int id){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -132,17 +131,17 @@ public class QuanLyUserActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(QuanLyUserActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ManagerUserActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
                             GetData(id);
                         }else {
-                            Toast.makeText(QuanLyUserActivity.this, "Xóa không thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ManagerUserActivity.this, "Xóa không thành công", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(QuanLyUserActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManagerUserActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
                         Log.d("A", "Error!\n" + error.toString());
                     }
                 }

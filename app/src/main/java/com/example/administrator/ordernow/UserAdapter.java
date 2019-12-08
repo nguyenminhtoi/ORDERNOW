@@ -10,7 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.app.AlertDialog;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -18,12 +17,12 @@ import java.util.List;
  * Created by Administrator on 06/12/2019.
  */
 
-public class NguoiDungAdapter extends BaseAdapter {
-    private QuanLyUserActivity context;
+public class UserAdapter extends BaseAdapter {
+    private ManagerUserActivity context;
     private int layout;
     public List<MangerUser> nguoiDunglist;
 
-    public NguoiDungAdapter(QuanLyUserActivity context, int layout, List<MangerUser> nguoiDunglist) {
+    public UserAdapter(ManagerUserActivity context, int layout, List<MangerUser> nguoiDunglist) {
         this.context = context;
         this.layout = layout;
         this.nguoiDunglist = nguoiDunglist;
