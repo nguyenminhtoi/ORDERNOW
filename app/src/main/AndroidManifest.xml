@@ -35,7 +35,8 @@
         </receiver>
 
         <activity android:name=".ManagerUserActivity" />
-        <activity android:name=".InserUserActivity"></activity>
+        <activity android:name=".InserUserActivity" />
+        <activity android:name=".UpdateUserActivity"></activity>
     </application>
 
 </manifest>

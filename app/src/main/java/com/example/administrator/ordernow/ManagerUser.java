@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by Administrator on 06/12/2019.
  */
 
-public class MangerUser implements Serializable {
+public class ManagerUser implements Serializable {
     @SerializedName("id")
     private int ID;
     @SerializedName("USER")
@@ -34,7 +34,7 @@ public class MangerUser implements Serializable {
     @SerializedName("ID_CREATED")
     private int ID_CREATED;
 
-    public MangerUser(int ID, String USER, String PASSWORD, String FULLNAME, String NAME_STORE, String BIRTHDAY, String ADDRESS, int SEX, int PHONE, String EMAIL, int ROLE, int ID_CREATED) {
+    public ManagerUser(int ID, String USER, String PASSWORD, String FULLNAME, String NAME_STORE, String BIRTHDAY, String ADDRESS, int SEX, int PHONE, String EMAIL, int ROLE, int ID_CREATED) {
         this.ID = ID;
         this.USER = USER;
         this.PASSWORD = PASSWORD;

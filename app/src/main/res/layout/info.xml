@@ -67,17 +67,17 @@
             android:textColor="@color/color_while"
             android:layout_below="@+id/viewInfoAccount"
             />
+
             <TextView
                 android:id="@+id/edt_quyen"
-                android:textStyle="bold"
-                android:layout_marginLeft="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
+                android:layout_below="@+id/viewInfoAccount"
+                android:layout_marginLeft="8dp"
                 android:text="Xem, sửa, thêm, xóa"
                 android:textColor="@color/color_while"
-                android:layout_below="@+id/viewInfoAccount"
-                />
+                android:textSize="14dp"
+                android:textStyle="bold" />
         </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
@@ -182,7 +182,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chủ cửa hàng: "
+                android:text="Tên: "
                 android:textSize="18dp"
                 android:textColor="@color/blue_deep"/>
             <EditText

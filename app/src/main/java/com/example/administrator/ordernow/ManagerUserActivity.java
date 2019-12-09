@@ -17,7 +17,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -43,7 +42,7 @@ public class ManagerUserActivity extends AppCompatActivity {
     ImageView imgAdd;
     @Bind(R.id.lvNguoiDung)
     ListView list;
-    ArrayList<MangerUser> arrayList;
+    ArrayList<ManagerUser> arrayList;
     UserAdapter adapter;
     String id;
     @Override
@@ -86,7 +85,7 @@ public class ManagerUserActivity extends AppCompatActivity {
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
                                 JSONObject object = jsonArray.getJSONObject(i);
-                                arrayList.add(new MangerUser(
+                                arrayList.add(new ManagerUser(
                                         object.getInt("ID"),
                                         object.getString("USER"),
                                         object.getString("PASSWORD"),

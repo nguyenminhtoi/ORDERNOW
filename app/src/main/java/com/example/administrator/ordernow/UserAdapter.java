@@ -20,17 +20,17 @@ import java.util.List;
 public class UserAdapter extends BaseAdapter {
     private ManagerUserActivity context;
     private int layout;
-    public List<MangerUser> nguoiDunglist;
+    public List<ManagerUser> userlist;
 
-    public UserAdapter(ManagerUserActivity context, int layout, List<MangerUser> nguoiDunglist) {
+    public UserAdapter(ManagerUserActivity context, int layout, List<ManagerUser> userlist) {
         this.context = context;
         this.layout = layout;
-        this.nguoiDunglist = nguoiDunglist;
+        this.userlist = userlist;
     }
 
     @Override
     public int getCount() {
-        return nguoiDunglist.size();
+        return userlist.size();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class UserAdapter extends BaseAdapter {
         return 0;
     }
     private class ViewHoler{
-        TextView tvTaiKhoan, tvTen, tvNgheNghiep, tvPass;
+        TextView tvTaiKhoan, tvTen, tvNgaySinh, tvPass;
         RelativeLayout rvAccount;
     }
     @Override
@@ -56,24 +56,24 @@ public class UserAdapter extends BaseAdapter {
             holer.tvTaiKhoan = (TextView) view.findViewById(R.id.tv_account);
             holer.tvPass = (TextView) view.findViewById(R.id.tv_pass);
             holer.tvTen = (TextView) view.findViewById(R.id.tv_ten);
-            holer.tvNgheNghiep = (TextView) view.findViewById(R.id.tv_nghenghiep);
+            holer.tvNgaySinh = (TextView) view.findViewById(R.id.tv_ngaysinh);
             holer.rvAccount = (RelativeLayout) view.findViewById(R.id.rv_account);
 
             view.setTag(holer);
         }else {
             holer = (ViewHoler) view.getTag();
         }
-        final MangerUser nguoiDung = nguoiDunglist.get(i);
+        final ManagerUser managerUser = userlist.get(i);
 
-        holer.tvTaiKhoan.setText(nguoiDung.getUSER());
-        holer.tvPass.setText(nguoiDung.getPASSWORD());
-        holer.tvTen.setText(nguoiDung.getFULLNAME());
-        holer.tvNgheNghiep.setText(nguoiDung.getNAME_STORE());
+        holer.tvTaiKhoan.setText(managerUser.getUSER());
+        holer.tvPass.setText(managerUser.getPASSWORD());
+        holer.tvTen.setText(managerUser.getFULLNAME());
+        holer.tvNgaySinh.setText(managerUser.getBIRTHDAY());
         holer.rvAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, Main2Activity.class);
-                intent.putExtra("dataNguoiDung", nguoiDung);
+                Intent intent = new Intent(context, UpdateUserActivity.class);
+                intent.putExtra("dataUser", managerUser);
                 context.startActivity(intent);
                 context.finish();
             }
@@ -81,7 +81,7 @@ public class UserAdapter extends BaseAdapter {
         holer.rvAccount.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Xoa(nguoiDung.getUSER(),nguoiDung.getID());
+                Xoa(managerUser.getUSER(),managerUser.getID());
                 //Toast.makeText(context, "Đang xoá", Toast.LENGTH_SHORT).show();
                 return true;
             }

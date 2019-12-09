@@ -150,9 +150,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(role.equals("2")){
-                edtQuyen.setText("Xem, thêm, sửa, xóa");
-            }else if(role.equals("3")){
-                edtQuyen.setText("Chỉ xem");
+                edtQuyen.setText("Nhân Viên");
+            }else if (role.equals("1")){
+                edtQuyen.setText("Quản lý");
             }else {
                 edtQuyen.setText("ADMIN");
             }
@@ -251,13 +251,12 @@ public class MainActivity extends AppCompatActivity {
         lnQuanLy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(role.equals("1")){
+                if(role.equals("2")){
+                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
+                }else {
                     Intent intent = new Intent(MainActivity.this, ManagerUserActivity.class);
                     startActivity(intent);
-                }else {
-                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         lnOrder.setOnClickListener(new View.OnClickListener() {
@@ -353,7 +352,6 @@ public class MainActivity extends AppCompatActivity {
         }else {
             sex = "0";
         }
-        Toast.makeText(MainActivity.this, id +  " " + sex , Toast.LENGTH_SHORT).show();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
