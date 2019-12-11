@@ -36,7 +36,8 @@
 
         <activity android:name=".ManagerUserActivity" />
         <activity android:name=".InserUserActivity" />
-        <activity android:name=".UpdateUserActivity"></activity>
+        <activity android:name=".UpdateUserActivity" />
+        <activity android:name=".TableActivity"></activity>
     </application>
 
 </manifest>

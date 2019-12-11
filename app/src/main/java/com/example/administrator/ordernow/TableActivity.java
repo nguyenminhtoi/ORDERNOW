@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,28 +32,30 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ManagerUserActivity extends AppCompatActivity {
-    String urlGetData = "http://minhtoi96.me/order/user/user.php";
-    String urlXoa = "http://minhtoi96.me/order/user/delete.php";
+public class TableActivity extends AppCompatActivity {
+    String urlGetData = "http://minhtoi96.me/order/list_table/table.php";
+    String urlXoa = "http://minhtoi96.me/order/list_table/delete.php";
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
     @Bind(R.id.imgBack)
     ImageView imgBack;
     @Bind(R.id.img_add)
     ImageView imgAdd;
-    @Bind(R.id.lvNguoiDung)
+    @Bind(R.id.lvTable)
     ListView list;
-    ArrayList<ManagerUser> arrayList;
-    UserAdapter adapter;
+    @Bind(R.id.lvLin)
+    LinearLayout ln;
+    ArrayList<Table> arrayList;
+    TableAdapter adapter;
     String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quan_ly_user);
+        setContentView(R.layout.activity_table);
         ButterKnife.bind(this);
-        tvTitle.setText("Quản lý Account");
+        tvTitle.setText("Quản lý bàn");
         arrayList = new ArrayList<>();
-        adapter = new UserAdapter(this, R.layout.list_user, arrayList);
+        adapter = new TableAdapter(TableActivity.this, R.layout.list_table, arrayList);
         list.setAdapter(adapter);
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
@@ -68,7 +71,7 @@ public class ManagerUserActivity extends AppCompatActivity {
         imgAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ManagerUserActivity.this, InserUserActivity.class);
+                Intent intent = new Intent(TableActivity.this, InserUserActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -80,24 +83,14 @@ public class ManagerUserActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //arrayList.clear();
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
                                 JSONObject object = jsonArray.getJSONObject(i);
-                                arrayList.add(new ManagerUser(
+                                arrayList.add(new Table(
                                         object.getInt("ID"),
-                                        object.getString("USER"),
-                                        object.getString("PASSWORD"),
-                                        object.getString("FULLNAME"),
-                                        object.getString("NAME_STORE"),
-                                        object.getString("BIRTHDAY"),
-                                        object.getString("ADDRESS"),
-                                        object.getInt("SEX"),
-                                        object.getInt("PHONE"),
-                                        object.getString("EMAIL"),
-                                        object.getInt("ROLE"),
-                                        object.getInt("ID_CREATED")
+                                        object.getInt("ID_USER"),
+                                        object.getString("NAME_TABLE")
                                 ));
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -109,7 +102,7 @@ public class ManagerUserActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ManagerUserActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TableActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_SHORT).show();
                     }
                 }
         ){
@@ -130,18 +123,21 @@ public class ManagerUserActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(ManagerUserActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                            arrayList.clear();
+                            Toast.makeText(TableActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                            arrayList = new ArrayList<>();
+                            adapter = new TableAdapter(TableActivity.this, R.layout.list_table, arrayList);
+                            list.setAdapter(adapter);
                             GetData( Integer.valueOf(id));
+
                         }else {
-                            Toast.makeText(ManagerUserActivity.this, "Xóa không thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TableActivity.this, "Xóa không thành công", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ManagerUserActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TableActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
                         Log.d("A", "Error!\n" + error.toString());
                     }
                 }
