@@ -37,7 +37,8 @@
         <activity android:name=".ManagerUserActivity" />
         <activity android:name=".InserUserActivity" />
         <activity android:name=".UpdateUserActivity" />
-        <activity android:name=".TableActivity"></activity>
+        <activity android:name=".TableActivity" />
+        <activity android:name=".VoucherActivity"></activity>
     </application>
 
 </manifest>

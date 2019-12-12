@@ -2,7 +2,7 @@ package com.example.administrator.ordernow;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +13,14 @@ import android.app.AlertDialog;
 
 import java.util.List;
 
+import static android.R.attr.id;
+
 /**
  * Created by Administrator on 22/11/2019.
  */
 
 public class TableAdapter extends BaseAdapter{
+
     private TableActivity context;
     private int layout;
     public List<Table> tablelist;
@@ -64,14 +67,11 @@ public class TableAdapter extends BaseAdapter{
         final Table table = tablelist.get(i);
 
         holer.tvNameTable.setText(table.getNAME_TABLE());
-        holer.tvNameStore.setText(String.valueOf(table.getID_USER()));
+        holer.tvNameStore.setText(Values.ID);
         holer.rvTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateUserActivity.class);
-                intent.putExtra("dataTable",table);
-                context.startActivity(intent);
-                context.finish();
+                context.showUpdateDialog(String.valueOf(table.getID()),table.getNAME_TABLE());
             }
         });
         holer.rvTable.setOnLongClickListener(new View.OnLongClickListener() {
@@ -85,9 +85,9 @@ public class TableAdapter extends BaseAdapter{
 
         return view;
     }
-    private void Xoa(String taikhoan, final int id){
+    private void Xoa(String name, final int id){
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-        dialog.setMessage("Bạn có muốn xóa tài khoản "+ taikhoan+ " không?");
+        dialog.setMessage("Bạn có muốn xóa tài khoản "+ name + " không?");
         dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

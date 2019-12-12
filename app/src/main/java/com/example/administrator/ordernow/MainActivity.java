@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
             pass = sharedPreferences.getString("pass", "90");
             fullname = sharedPreferences.getString("fullname", "90");
             name_store = sharedPreferences.getString("name_store", "90");
+            Values.ID = name_store;
             birthday = sharedPreferences.getString("birthday", "90");
             address = sharedPreferences.getString("address", "90");
             sex = sharedPreferences.getString("sex", "90");
@@ -250,7 +251,12 @@ public class MainActivity extends AppCompatActivity {
         lnMaGiamGia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(role.equals("2")){
+                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(MainActivity.this, VoucherActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         lnQuanLy.setOnClickListener(new View.OnClickListener() {

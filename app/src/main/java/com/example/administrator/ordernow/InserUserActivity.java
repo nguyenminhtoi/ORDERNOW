@@ -154,7 +154,6 @@ public class InserUserActivity extends AppCompatActivity {
             nameStore = sharedPreferences.getString("name_store", "90");
         }
         role = "2";
-        Toast.makeText(InserUserActivity.this, id_created + " " + nameStore + ' ' + role + "" + sex , Toast.LENGTH_LONG).show();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {

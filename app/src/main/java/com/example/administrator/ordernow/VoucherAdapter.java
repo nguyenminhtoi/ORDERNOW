@@ -1,36 +1,37 @@
 package com.example.administrator.ordernow;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.app.AlertDialog;
 
 import java.util.List;
 
+
 /**
- * Created by Administrator on 06/12/2019.
+ * Created by Administrator on 12/12/2019.
  */
 
-public class UserAdapter extends BaseAdapter {
-    private ManagerUserActivity context;
-    private int layout;
-    public List<ManagerUser> userlist;
+public class VoucherAdapter extends BaseAdapter {
 
-    public UserAdapter(ManagerUserActivity context, int layout, List<ManagerUser> userlist) {
+    private VoucherActivity context;
+    private int layout;
+    public List<Voucher> voucherlist;
+
+    public VoucherAdapter(VoucherActivity context, int layout, List<Voucher> voucherlist) {
         this.context = context;
         this.layout = layout;
-        this.userlist = userlist;
+        this.voucherlist = voucherlist;
     }
 
     @Override
     public int getCount() {
-        return userlist.size();
+        return voucherlist.size();
     }
 
     @Override
@@ -43,8 +44,8 @@ public class UserAdapter extends BaseAdapter {
         return 0;
     }
     private class ViewHoler{
-        TextView tvTaiKhoan, tvTen, tvNgaySinh, tvPass;
-        RelativeLayout rvAccount;
+        TextView tvNameVoucher, tvPrice, tvCode;
+        RelativeLayout rvVoucher;
     }
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
@@ -53,35 +54,30 @@ public class UserAdapter extends BaseAdapter {
             holer = new ViewHoler();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
-            holer.tvTaiKhoan = (TextView) view.findViewById(R.id.tv_account);
-            holer.tvPass = (TextView) view.findViewById(R.id.tv_pass);
-            holer.tvTen = (TextView) view.findViewById(R.id.tv_ten);
-            holer.tvNgaySinh = (TextView) view.findViewById(R.id.tv_ngaysinh);
-            holer.rvAccount = (RelativeLayout) view.findViewById(R.id.rv_account);
+            holer.tvNameVoucher = (TextView) view.findViewById(R.id.tv_name_voucher);
+            holer.tvPrice = (TextView) view.findViewById(R.id.tv_price);
+            holer.tvCode = (TextView) view.findViewById(R.id.tv_code);
+            holer.rvVoucher = (RelativeLayout) view.findViewById(R.id.rv_voucher);
 
             view.setTag(holer);
         }else {
             holer = (ViewHoler) view.getTag();
         }
-        final ManagerUser managerUser = userlist.get(i);
+        final Voucher voucher = voucherlist.get(i);
 
-        holer.tvTaiKhoan.setText(managerUser.getUSER());
-        holer.tvPass.setText(managerUser.getPASSWORD());
-        holer.tvTen.setText(managerUser.getFULLNAME());
-        holer.tvNgaySinh.setText(managerUser.getBIRTHDAY());
-        holer.rvAccount.setOnClickListener(new View.OnClickListener() {
+        holer.tvNameVoucher.setText(voucher.getNAME_VOUCHER());
+        holer.tvPrice.setText(voucher.getPRICE_SALE());
+        holer.tvCode.setText(voucher.getCODE_VOUCHER());
+        holer.rvVoucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateUserActivity.class);
-                intent.putExtra("dataUser", managerUser);
-                context.startActivity(intent);
-                context.finish();
+                context.showUpdateDialog(String.valueOf(voucher.getID()),voucher.getNAME_VOUCHER(),voucher.getCODE_VOUCHER(),voucher.getPRICE_SALE());
             }
         });
-        holer.rvAccount.setOnLongClickListener(new View.OnLongClickListener() {
+        holer.rvVoucher.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Xoa(managerUser.getUSER(),managerUser.getID());
+                Xoa(voucher.getNAME_VOUCHER(),voucher.getID());
                 //Toast.makeText(context, "Đang xoá", Toast.LENGTH_SHORT).show();
                 return true;
             }

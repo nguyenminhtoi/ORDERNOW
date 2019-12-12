@@ -1,5 +1,6 @@
 package com.example.administrator.ordernow;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,11 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.AlertDialog;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -36,11 +35,11 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class TableActivity extends AppCompatActivity {
-    String urlGetData = "http://minhtoi96.me/order/list_table/table.php";
-    String urlDelete = "http://minhtoi96.me/order/list_table/delete.php";
-    String urlInsert = "http://minhtoi96.me/order/list_table/Insert.php";
-    String urlUpdate = "http://minhtoi96.me/order/list_table/update.php";
+public class VoucherActivity extends AppCompatActivity {
+    String urlGetData = "http://minhtoi96.me/order/voucher/voucher.php";
+    String urlDelete = "http://minhtoi96.me/order/voucher/delete.php";
+    String urlInsert = "http://minhtoi96.me/order/voucher/Insert.php";
+    String urlUpdate = "http://minhtoi96.me/order/voucher/update.php";
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
     @Bind(R.id.imgBack)
@@ -49,17 +48,17 @@ public class TableActivity extends AppCompatActivity {
     ImageView imgAdd;
     @Bind(R.id.lvTable)
     ListView list;
-    ArrayList<Table> arrayList;
-    TableAdapter adapter;
+    ArrayList<Voucher> arrayList;
+    VoucherAdapter adapter;
     String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
         ButterKnife.bind(this);
-        tvTitle.setText("Quản lý bàn");
+        tvTitle.setText("Quản lý mã giảm giá");
         arrayList = new ArrayList<>();
-        adapter = new TableAdapter(TableActivity.this, R.layout.list_table, arrayList);
+        adapter = new VoucherAdapter(VoucherActivity.this, R.layout.list_voucher, arrayList);
         list.setAdapter(adapter);
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
@@ -89,10 +88,12 @@ public class TableActivity extends AppCompatActivity {
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
                                 JSONObject object = jsonArray.getJSONObject(i);
-                                arrayList.add(new Table(
+                                arrayList.add(new Voucher(
                                         object.getInt("ID"),
                                         object.getInt("ID_USER"),
-                                        object.getString("NAME_TABLE")
+                                        object.getString("NAME_VOUCHER"),
+                                        object.getString("CODE_VOUCHER"),
+                                        object.getString("PRICE_SALE")
                                 ));
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -104,7 +105,7 @@ public class TableActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(TableActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VoucherActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_SHORT).show();
                     }
                 }
         ){
@@ -125,20 +126,20 @@ public class TableActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(TableActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VoucherActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
                             Intent intent = getIntent();
                             finish();
                             startActivity(intent);
 
                         }else {
-                            Toast.makeText(TableActivity.this, "Xóa không thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VoucherActivity.this, "Xóa không thành công", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(TableActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VoucherActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
                         Log.d("A", "Error!\n" + error.toString());
                     }
                 }
@@ -153,26 +154,26 @@ public class TableActivity extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
-    private void Insert(final String edit){
+    private void Insert(final String name, final String code, final String price){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlInsert,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(TableActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VoucherActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
                             Intent intent = getIntent();
                             finish();
                             startActivity(intent);
                         }else {
-                            Toast.makeText(TableActivity.this, "Thêm không thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VoucherActivity.this, "Thêm không thành công!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(TableActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VoucherActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
                         Log.d("A", "Error!\n" + error.toString());
                     }
                 }
@@ -181,32 +182,34 @@ public class TableActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID_USER", id);
-                params.put("NAME_TABLE", edit);
+                params.put("NAME_VOUCHER", name);
+                params.put("CODE_VOUCHER", code);
+                params.put("PRICE_SALE", price);
                 return params;
             }
         };
         requestQueue.add(stringRequest);
     }
-    public void Update(final String edit, final String i){
+    public void Update(final String name, final String code, final String price,final String i){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlUpdate,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(TableActivity.this, "Sửa thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VoucherActivity.this, "Sửa thành công!", Toast.LENGTH_SHORT).show();
                             Intent intent = getIntent();
                             finish();
                             startActivity(intent);
                         }else {
-                            Toast.makeText(TableActivity.this, "Sửa không thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VoucherActivity.this, "Sửa không thành công!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(TableActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VoucherActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
                         Log.d("A", "Error!\n" + error.toString());
                     }
                 }
@@ -215,7 +218,10 @@ public class TableActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID", i);
-                params.put("NAME_TABLE", edit);
+                params.put("ID_USER", id);
+                params.put("NAME_VOUCHER", name);
+                params.put("CODE_VOUCHER", code);
+                params.put("PRICE_SALE", price);
                 return params;
             }
         };
@@ -225,17 +231,19 @@ public class TableActivity extends AppCompatActivity {
     public void showInsertDialog() {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dialog_insert_table, null);
+        final View dialogView = inflater.inflate(R.layout.dialog_insert_voucher, null);
         dialogBuilder.setView(dialogView);
 
-        final EditText edtInsert = (EditText) dialogView.findViewById(R.id.edit_insert);
+        final EditText edtName = (EditText) dialogView.findViewById(R.id.edit_Name);
+        final EditText edtCode = (EditText) dialogView.findViewById(R.id.edit_Code);
+        final EditText edtPrice = (EditText) dialogView.findViewById(R.id.edit_Price);
 
-        dialogBuilder.setTitle("THÊM BÀN");
-        dialogBuilder.setMessage("Nhập tên bàn");
+        dialogBuilder.setTitle("THÊM VOUCHER");
+        dialogBuilder.setMessage("Nhập tên voucher");
         dialogBuilder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                //Toast.makeText(TableActivity.this, edt.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-                Insert(edtInsert.getText().toString().trim());
+                //Toast.makeText(VoucherActivity.this, edt.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                Insert(edtName.getText().toString().trim(), edtCode.getText().toString().trim(), edtPrice.getText().toString().trim());
             }
         });
         dialogBuilder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
@@ -246,20 +254,26 @@ public class TableActivity extends AppCompatActivity {
         AlertDialog b = dialogBuilder.create();
         b.show();
     }
-    public void showUpdateDialog(final String i, String name) {
+    public void showUpdateDialog(final String i, String name, String code, String price) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dialog_update_table, null);
+        final View dialogView = inflater.inflate(R.layout.dialog_update_voucher, null);
         dialogBuilder.setView(dialogView);
 
-        final EditText edtUpdate = (EditText) dialogView.findViewById(R.id.edit_update);
-        edtUpdate.setText(name);
-        dialogBuilder.setTitle("SỬA TÊN BÀN");
-        dialogBuilder.setMessage("Nhập tên bàn mới");
+        final EditText edtName = (EditText) dialogView.findViewById(R.id.edit_Name_update);
+        final EditText edtCode = (EditText) dialogView.findViewById(R.id.edit_Code_update);
+        final EditText edtPrice = (EditText) dialogView.findViewById(R.id.edit_Price_update);
+
+        edtName.setText(name);
+        edtCode.setText(code);
+        edtPrice.setText(price);
+
+        dialogBuilder.setTitle("SỬA TÊN VOUCHER");
+        dialogBuilder.setMessage("Nhập tên voucher mới");
         dialogBuilder.setPositiveButton("Sửa", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                //Toast.makeText(TableActivity.this, edt.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-                Update(edtUpdate.getText().toString().trim(), i);
+                //Toast.makeText(VoucherActivity.this, edt.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                Update(edtName.getText().toString().trim(),edtCode.getText().toString().trim(),edtPrice.getText().toString().trim(), i);
             }
         });
         dialogBuilder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
