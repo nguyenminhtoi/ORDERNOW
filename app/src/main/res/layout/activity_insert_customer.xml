@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cyan_color"
-    tools:context="com.example.administrator.ordernow.InserUserActivity">
+    tools:context="com.example.administrator.ordernow.InsertCustomerActivity">
     <include layout="@layout/toolbar" />
 
     <ScrollView
@@ -40,10 +40,10 @@
                         android:layout_toRightOf="@+id/imgAccount">
 
                         <EditText
-                            android:id="@+id/edt_update_username"
+                            android:id="@+id/edt_insert_name_customer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Tài khoản"
+                            android:hint="Tên khách hàng"
                             android:imeOptions="actionDone"
                             android:maxLines="2" />
                     </android.support.design.widget.TextInputLayout>
@@ -59,44 +59,6 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_create_order">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@+id/imgPass">
-
-                        <EditText
-                            android:id="@+id/edt_update_password"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:hint="Mật khẩu"
-                            android:imeOptions="actionDone"
-                            android:maxLines="2" />
-                    </android.support.design.widget.TextInputLayout>
-
-                    <ImageView
-                        android:id="@+id/imgPass"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="10dp"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_password_login" />
-
-                </RelativeLayout>
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -124,10 +86,10 @@
                             android:layout_toRightOf="@+id/imgName">
 
                             <EditText
-                                android:id="@+id/edt_update_ten"
+                                android:id="@+id/edt_insert_code"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Họ tên"
+                                android:hint="Code"
                                 android:imeOptions="actionDone"
                                 android:maxLines="2" />
                         </android.support.design.widget.TextInputLayout>
@@ -137,9 +99,11 @@
                             android:id="@+id/imgName"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:layout_marginTop="10dp"
                             android:padding="8dp"
-                            android:src="@drawable/ic_name" />
+                            android:src="@drawable/ic_bien_so"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
 
                     </RelativeLayout>
                 </LinearLayout>
@@ -164,7 +128,7 @@
                             android:layout_toRightOf="@+id/imgNgaySinh">
 
                             <EditText
-                                android:id="@+id/edt_update_ngay_sinh"
+                                android:id="@+id/edt_insert_brithday"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:focusable="false"
@@ -203,52 +167,11 @@
                         <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_toRightOf="@+id/imgDiaChi">
-
-                            <EditText
-                                android:id="@+id/edt_update_dia_chi"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Địa chỉ"
-                                android:imeOptions="actionDone"
-                                android:maxLines="2" />
-                        </android.support.design.widget.TextInputLayout>
-
-
-                        <!-- ICON -->
-                        <ImageView
-                            android:id="@+id/imgDiaChi"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="10dp"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_address" />
-
-                    </RelativeLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:orientation="horizontal">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_create_order">
-
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:layout_marginLeft="3dp"
                             android:layout_toRightOf="@+id/dauso">
 
                             <EditText
-                                android:id="@+id/edt_update_sdt"
+                                android:id="@+id/edt_insert_phone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Số điện thoại"
@@ -294,7 +217,7 @@
                         android:background="@drawable/border_create_order">
 
                         <Spinner
-                            android:id="@+id/spn_gt"
+                            android:id="@+id/spn_sex"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -332,7 +255,7 @@
                             android:layout_toRightOf="@+id/imgEmail">
 
                             <EditText
-                                android:id="@+id/edt_update_email"
+                                android:id="@+id/edt_insert_email_customer"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Email"
@@ -352,6 +275,119 @@
 
                     </RelativeLayout>
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_create_order">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/imgScore">
+
+                            <EditText
+                                android:id="@+id/edt_insert_score"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Điểm tích luỹ"
+                                android:imeOptions="actionDone"
+                                android:maxLines="2" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <!-- ICON -->
+                        <ImageView
+                            android:id="@+id/imgScore"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_so_may" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_create_order">
+
+                        <Spinner
+                            android:id="@+id/spn_level"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_toRightOf="@+id/imgLevel" />
+
+
+                        <!-- ICON -->
+                        <ImageView
+                            android:id="@+id/imgLevel"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_hang" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_create_order">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/imgPrice">
+
+                            <EditText
+                                android:id="@+id/edt_insert_price_customer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Giá giảm"
+                                android:imeOptions="actionDone"
+                                android:maxLines="2" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <!-- ICON -->
+                        <ImageView
+                            android:id="@+id/imgPrice"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_so_khung" />
+
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -364,7 +400,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btn_insert"
+                    android:id="@+id/btn_insert_customer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -378,7 +414,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/btn_huy"
+                    android:id="@+id/btn_huy_customer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"

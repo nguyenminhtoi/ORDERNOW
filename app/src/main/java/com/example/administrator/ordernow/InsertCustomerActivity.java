@@ -33,46 +33,54 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class InserUserActivity extends AppCompatActivity {
-    String urlInsert = "http://minhtoi96.me/order/user/Insert.php";
+public class InsertCustomerActivity extends AppCompatActivity {
+    String urlInsert = "http://minhtoi96.me/order/customer/Insert.php";
 
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
     @Bind(R.id.imgBack)
     ImageView imgBack;
 
-    @Bind(R.id.edt_insert_username)
-    EditText edtUser;
-    @Bind(R.id.edt_insert_password)
-    EditText edtPass;
-    @Bind(R.id.edt_insert_ngay_sinh)
-    EditText edtNgaySinh;
-    @Bind(R.id.edt_insert_ten)
-    EditText edtTen;
-    @Bind(R.id.edt_insert_dia_chi)
-    EditText edtDiaChi;
-    @Bind(R.id.edt_insert_sdt)
-    EditText edtSDT;
-    @Bind(R.id.edt_insert_email)
+    @Bind(R.id.edt_insert_name_customer)
+    EditText edtName;
+    @Bind(R.id.edt_insert_code)
+    EditText edtCode;
+    @Bind(R.id.edt_insert_brithday)
+    EditText edtBrithday;
+    @Bind(R.id.edt_insert_phone)
+    EditText edtPhone;
+    @Bind(R.id.edt_insert_email_customer)
     EditText edtEmail;
+    @Bind(R.id.edt_insert_score)
+    EditText edtScore;
+    @Bind(R.id.edt_insert_price_customer)
+    EditText edtPrice;
 
-    @Bind(R.id.spn_gt)
-    Spinner spinnerGT;
+    @Bind(R.id.spn_sex)
+    Spinner spinnerSex;
+    @Bind(R.id.spn_level)
+    Spinner spinnerLevel;
 
-    @Bind(R.id.btn_insert)
+    @Bind(R.id.btn_insert_customer)
     Button btnInsert;
-    @Bind(R.id.btn_huy)
+    @Bind(R.id.btn_huy_customer)
     Button btnHuy;
-    String role, id_created, sex, nameStore;
+    String id_user, sex, level;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insert_user);
+        setContentView(R.layout.activity_insert_customer);
         ButterKnife.bind(this);
         tvTitle.setText("Thêm Account");
-        String [] gioitinh = {"Chọn giới tính","Nam", "Nữ"};
-        ArrayAdapter<String> adapterGT = new ArrayAdapter<String>(this, R.layout.spinner_update, R.id.textSpin, gioitinh);
-        spinnerGT.setAdapter(adapterGT);
+
+        String [] sex = {"Chọn giới tính","Nam", "Nữ"};
+        ArrayAdapter<String> adapterSex = new ArrayAdapter<String>(this, R.layout.spinner_update, R.id.textSpin, sex);
+        spinnerSex.setAdapter(adapterSex);
+
+        String [] level = {"Chọn loại khách hàng","Thường", "Bạc", "Vàng"};
+        ArrayAdapter<String> adapterLevel = new ArrayAdapter<String>(this, R.layout.spinner_update, R.id.textSpin, level);
+        spinnerLevel.setAdapter(adapterLevel);
+
         btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,12 +90,12 @@ public class InserUserActivity extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InserUserActivity.this, ManagerUserActivity.class);
+                Intent intent = new Intent(InsertCustomerActivity.this, CustomerActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
-        edtNgaySinh.setOnClickListener(new View.OnClickListener() {
+        edtBrithday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setBrithday();
@@ -96,22 +104,24 @@ public class InserUserActivity extends AppCompatActivity {
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String gt = (String) spinnerGT.getSelectedItem();
-                if(edtUser.getText().toString().trim().equals("")
-                        ||edtPass.getText().toString().trim().equals("")
-                        ||edtTen.getText().toString().trim().equals("")
-                        ||edtNgaySinh.getText().toString().trim().equals("")
-                        ||edtDiaChi.getText().toString().trim().equals("")
-                        ||edtEmail.getText().toString().trim().equals("")
-                        ||edtSDT.getText().toString().trim().equals("")
+                final String sex = (String) spinnerSex.getSelectedItem();
+                final String level = (String) spinnerSex.getSelectedItem();
+
+                if(edtName.getText().toString().trim().equals("")
+                        ||edtCode.getText().toString().trim().equals("")
+                        ||edtScore.getText().toString().trim().equals("")
+                        ||edtPhone.getText().toString().trim().equals("")
                         ){
-                    Toast.makeText(InserUserActivity.this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show();
-                }else if(gt.equals("Chọn giới tính")){
-                    Toast.makeText(InserUserActivity.this, "Vui lòng chọn giới tính!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InsertCustomerActivity.this, "Vui lòng nhập đủ thông tin !", Toast.LENGTH_SHORT).show();
+                }else if(sex.equals("Chọn giới tính")){
+                    Toast.makeText(InsertCustomerActivity.this, "Vui lòng chọn giới tính !", Toast.LENGTH_SHORT).show();
+                }
+                else if(level.equals("Chọn loại khách hàng")){
+                    Toast.makeText(InsertCustomerActivity.this, "Vui lòng chọn loại khách hàng !", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Them(urlInsert);
-                    Intent intent = new Intent(InserUserActivity.this, ManagerUserActivity.class);
+                    Intent intent = new Intent(InsertCustomerActivity.this, CustomerActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -128,48 +138,50 @@ public class InserUserActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 calendarBirthday.set(i, i1, i2);
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                edtNgaySinh.setText(simpleDateFormat.format(calendarBirthday.getTime()));
+                edtBrithday.setText(simpleDateFormat.format(calendarBirthday.getTime()));
             }
         },year, month, day);
         datePickerDialog.show();
     }
     private void Them(String url){
 
-        final String user = edtUser.getText().toString().trim();
-        final String pass = edtPass.getText().toString().trim();
-        final String ten = edtTen.getText().toString().trim();
-        final String ngaysinh = edtNgaySinh.getText().toString().trim();
-        final String diachi = edtDiaChi.getText().toString().trim();
-        final String sdt = edtSDT.getText().toString().trim();
-        final String email = edtEmail.getText().toString().trim();
-        final String gt = (String) spinnerGT.getSelectedItem();
-        if(gt.equals("Nam")){
+        final String x = (String) spinnerSex.getSelectedItem();
+        final String lv = (String) spinnerLevel.getSelectedItem();
+        if(x.equals("Nam")){
             sex = "1";
         }else {
             sex = "0";
         }
+        if(lv.equals("Vàng")){
+            level = "2";
+        }else if(lv.equals("Bạc")) {
+            level = "1";
+        }
+        else {
+            level = "0";
+        }
+
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
-            id_created = sharedPreferences.getString("id", "90");
-            nameStore = sharedPreferences.getString("name_store", "90");
+            id_user = sharedPreferences.getString("id", "90");
         }
-        role = "2";
+
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(InserUserActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(InsertCustomerActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(InserUserActivity.this, "Đăng ký không thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(InsertCustomerActivity.this, "Thêm không thành công!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(InserUserActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InsertCustomerActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
                         Log.d("A", "Error!\n" + error.toString());
                     }
                 }
@@ -177,17 +189,16 @@ public class InserUserActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("USER", user);
-                params.put("PASSWORD", pass);
-                params.put("FULLNAME", ten);
-                params.put("BIRTHDAY", ngaysinh);
-                params.put("ADDRESS", diachi);
-                params.put("PHONE", sdt);
+                params.put("ID_USER", id_user);
+                params.put("NAME_CUSTOMER", edtName.getText().toString().trim());
+                params.put("CODE_CUSTOMER", edtCode.getText().toString().trim());
+                params.put("PHONE", edtPhone.getText().toString().trim());
+                params.put("EMAIL", edtEmail.getText().toString().trim());
+                params.put("BIRTHDAY", edtBrithday.getText().toString().trim());
                 params.put("SEX", sex);
-                params.put("EMAIL", email);
-                params.put("NAME_STORE", nameStore);
-                params.put("ROLE", role);
-                params.put("ID_CREATED", id_created);
+                params.put("SCORE", edtScore.getText().toString().trim());
+                params.put("LEVEL", level);
+                params.put("PRICE_SALE", edtPrice.getText().toString().trim());
                 return params;
             }
         };

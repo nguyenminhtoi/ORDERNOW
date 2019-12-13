@@ -31,9 +31,9 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ManagerUserActivity extends AppCompatActivity {
-    String urlGetData = "http://minhtoi96.me/order/user/user.php";
-    String urlXoa = "http://minhtoi96.me/order/user/delete.php";
+public class CustomerActivity extends AppCompatActivity {
+    String urlGetData = "http://minhtoi96.me/order/customer/customer.php";
+    String urlXoa = "http://minhtoi96.me/order/customer/delete.php";
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
     @Bind(R.id.imgBack)
@@ -42,17 +42,17 @@ public class ManagerUserActivity extends AppCompatActivity {
     ImageView imgAdd;
     @Bind(R.id.lvNguoiDung)
     ListView list;
-    ArrayList<ManagerUser> arrayList;
-    UserAdapter adapter;
+    ArrayList<Customer> arrayList;
+    CustomerAdapter adapter;
     String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quan_ly_user);
         ButterKnife.bind(this);
-        tvTitle.setText("Quản lý Account");
+        tvTitle.setText("Quản lý khách hàng");
         arrayList = new ArrayList<>();
-        adapter = new UserAdapter(this, R.layout.list_user, arrayList);
+        adapter = new CustomerAdapter(this, R.layout.list_customer, arrayList);
         list.setAdapter(adapter);
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
@@ -68,7 +68,7 @@ public class ManagerUserActivity extends AppCompatActivity {
         imgAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ManagerUserActivity.this, InserUserActivity.class);
+                Intent intent = new Intent(CustomerActivity.this, InsertCustomerActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -85,19 +85,18 @@ public class ManagerUserActivity extends AppCompatActivity {
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
                                 JSONObject object = jsonArray.getJSONObject(i);
-                                arrayList.add(new ManagerUser(
+                                arrayList.add(new Customer(
                                         object.getInt("ID"),
-                                        object.getString("USER"),
-                                        object.getString("PASSWORD"),
-                                        object.getString("FULLNAME"),
-                                        object.getString("NAME_STORE"),
-                                        object.getString("BIRTHDAY"),
-                                        object.getString("ADDRESS"),
-                                        object.getInt("SEX"),
+                                        object.getInt("ID_USER"),
+                                        object.getString("NAME_CUSTOMER"),
+                                        object.getString("CODE_CUSTOMER"),
                                         object.getInt("PHONE"),
                                         object.getString("EMAIL"),
-                                        object.getInt("ROLE"),
-                                        object.getInt("ID_CREATED")
+                                        object.getString("BIRTHDAY"),
+                                        object.getInt("SEX"),
+                                        object.getInt("SCORE"),
+                                        object.getInt("LEVEL"),
+                                        object.getInt("PRICE_SALE")
                                 ));
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -109,14 +108,14 @@ public class ManagerUserActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ManagerUserActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CustomerActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_SHORT).show();
                     }
                 }
         ){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("ID", String.valueOf(id));
+                params.put("USER", String.valueOf(id));
                 return params;
             }
 
@@ -130,19 +129,19 @@ public class ManagerUserActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(ManagerUserActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CustomerActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
                             Intent intent = getIntent();
                             finish();
                             startActivity(intent);
                         }else {
-                            Toast.makeText(ManagerUserActivity.this, "Xóa không thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CustomerActivity.this, "Xóa không thành công", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ManagerUserActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CustomerActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
                         Log.d("A", "Error!\n" + error.toString());
                     }
                 }

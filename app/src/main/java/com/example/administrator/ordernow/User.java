@@ -13,7 +13,7 @@ import static android.os.Build.ID;
  */
 
 public class User implements Serializable {
-    @SerializedName("id")
+    @SerializedName("ID")
     private int ID;
     @SerializedName("USER")
     private String USER;

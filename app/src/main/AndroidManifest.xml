@@ -38,7 +38,10 @@
         <activity android:name=".InserUserActivity" />
         <activity android:name=".UpdateUserActivity" />
         <activity android:name=".TableActivity" />
-        <activity android:name=".VoucherActivity"></activity>
+        <activity android:name=".VoucherActivity" />
+        <activity android:name=".CustomerActivity" />
+        <activity android:name=".InsertCustomerActivity" />
+        <activity android:name=".UpdateCustomerActivity"></activity>
     </application>
 
 </manifest>
