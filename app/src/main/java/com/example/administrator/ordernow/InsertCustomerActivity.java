@@ -120,7 +120,7 @@ public class InsertCustomerActivity extends AppCompatActivity {
                     Toast.makeText(InsertCustomerActivity.this, "Vui lòng chọn loại khách hàng !", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Them(urlInsert);
+                    Insert(urlInsert);
                     Intent intent = new Intent(InsertCustomerActivity.this, CustomerActivity.class);
                     startActivity(intent);
                     finish();
@@ -143,7 +143,7 @@ public class InsertCustomerActivity extends AppCompatActivity {
         },year, month, day);
         datePickerDialog.show();
     }
-    private void Them(String url){
+    private void Insert(String url){
 
         final String x = (String) spinnerSex.getSelectedItem();
         final String lv = (String) spinnerLevel.getSelectedItem();

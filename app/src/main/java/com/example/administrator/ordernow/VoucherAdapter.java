@@ -87,7 +87,7 @@ public class VoucherAdapter extends BaseAdapter {
     }
     private void Xoa(String name, final int id){
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-        dialog.setMessage("Bạn có muốn xóa tài khoản "+ name + " không?");
+        dialog.setMessage("Bạn có muốn xóa voucher "+ name + " không?");
         dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

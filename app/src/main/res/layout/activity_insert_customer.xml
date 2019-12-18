@@ -299,6 +299,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Điểm tích luỹ"
+                                android:inputType="number"
                                 android:imeOptions="actionDone"
                                 android:maxLines="2" />
                         </android.support.design.widget.TextInputLayout>
@@ -372,6 +373,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Giá giảm"
+                                android:inputType="number"
                                 android:imeOptions="actionDone"
                                 android:maxLines="2" />
                         </android.support.design.widget.TextInputLayout>
@@ -407,7 +409,7 @@
                     android:background="@drawable/drawable_btn_create_account"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Thêm Account"
+                    android:text="Thêm khách hàng"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18dp"

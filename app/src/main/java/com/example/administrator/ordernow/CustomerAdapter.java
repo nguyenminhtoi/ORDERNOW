@@ -89,8 +89,8 @@ public class CustomerAdapter extends BaseAdapter {
         holer.rvCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateUserActivity.class);
-                intent.putExtra("dataUser", customer);
+                Intent intent = new Intent(context, UpdateCustomerActivity.class);
+                intent.putExtra("dataCustomer", customer);
                 context.startActivity(intent);
                 context.finish();
             }
@@ -108,7 +108,7 @@ public class CustomerAdapter extends BaseAdapter {
     }
     private void Xoa(String name, final int id){
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-        dialog.setMessage("Bạn có muốn xóa tài khoản "+ name + " không?");
+        dialog.setMessage("Bạn có muốn xóa khách hàng "+ name + " không?");
         dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

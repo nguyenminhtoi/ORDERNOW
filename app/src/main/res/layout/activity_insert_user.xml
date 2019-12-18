@@ -371,7 +371,7 @@
                     android:background="@drawable/drawable_btn_create_account"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Thêm Account"
+                    android:text="Thêm User"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18dp"

@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -41,7 +42,10 @@
         <activity android:name=".VoucherActivity" />
         <activity android:name=".CustomerActivity" />
         <activity android:name=".InsertCustomerActivity" />
-        <activity android:name=".UpdateCustomerActivity"></activity>
+        <activity android:name=".UpdateCustomerActivity" />
+        <activity android:name=".FoodActivity" />
+        <activity android:name=".InsertFoodActivity" />
+        <activity android:name=".UpdateFoodActivity" />
     </application>
 
 </manifest>

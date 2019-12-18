@@ -70,7 +70,7 @@ public class UpdateUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user);
         ButterKnife.bind(this);
-        tvTitle.setText("Sửa thông tin Account");
+        tvTitle.setText("Sửa thông tin User");
         String [] gioitinh = {"Chọn giới tính","Nam", "Nữ"};
         ArrayAdapter<String> adapterGT = new ArrayAdapter<String>(this, R.layout.spinner_update, R.id.textSpin, gioitinh);
         spinnerGT.setAdapter(adapterGT);

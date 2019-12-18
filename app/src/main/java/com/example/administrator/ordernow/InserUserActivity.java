@@ -69,7 +69,7 @@ public class InserUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_user);
         ButterKnife.bind(this);
-        tvTitle.setText("Thêm Account");
+        tvTitle.setText("Thêm User");
         String [] gioitinh = {"Chọn giới tính","Nam", "Nữ"};
         ArrayAdapter<String> adapterGT = new ArrayAdapter<String>(this, R.layout.spinner_update, R.id.textSpin, gioitinh);
         spinnerGT.setAdapter(adapterGT);

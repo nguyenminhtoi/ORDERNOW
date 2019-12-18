@@ -244,7 +244,12 @@ public class MainActivity extends AppCompatActivity {
         lnDsMon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(role.equals("2")){
+                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(MainActivity.this, FoodActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         lnDoanhThu.setOnClickListener(new View.OnClickListener() {
