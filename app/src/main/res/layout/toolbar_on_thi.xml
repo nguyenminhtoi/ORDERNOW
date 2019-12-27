@@ -15,115 +15,63 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:padding="10dp"
-            android:layout_marginLeft="9dp"
             android:background="@drawable/ic_back"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_width="70dp"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         >
         <LinearLayout
-            android:id="@+id/ln_ly_thuyet"
+            android:id="@+id/ln_order"
             android:gravity="center"
             android:padding="2dp"
             android:orientation="horizontal"
             android:background="@drawable/pink_out_line"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/btn_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:text="ORDER"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:id="@+id/ln_pay"
+            android:gravity="center"
+            android:padding="2dp"
+            android:orientation="horizontal"
+            android:background="@drawable/pink_out_line"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
             <Button
-                android:id="@+id/btn_ly_thuyet"
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_pay"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lý thuyết"
+                android:text="Đã thanh toán"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_marginRight="5dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_width="70dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:id="@+id/ln_bien_bao"
-            android:gravity="center"
-            android:padding="2dp"
-            android:orientation="horizontal"
-            android:background="@drawable/pink_out_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-            <Button
-                android:id="@+id/btn_bien_bao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Biển báo"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginRight="5dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_width="70dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:id="@+id/ln_hinh_anh"
-            android:gravity="center"
-            android:padding="2dp"
-            android:orientation="horizontal"
-            android:background="@drawable/pink_out_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-            <Button
-                android:id="@+id/btn_hinh_anh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hình ảnh"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_width="70dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:id="@+id/ln_dap_an"
-            android:gravity="center"
-            android:padding="2dp"
-            android:orientation="horizontal"
-            android:background="@drawable/pink_out_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-            <Button
-                android:id="@+id/btn_dap_an"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đáp án"
-                android:background="@color/yellow_color"
-                android:textColor="@color/newreport_shift_mau11"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
+
 </LinearLayout>

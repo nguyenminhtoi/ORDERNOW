@@ -40,6 +40,7 @@ public class Table implements Serializable {
     public void setID_USER(int ID_USER) {
         this.ID_USER = ID_USER;
     }
+
     public String getNAME_TABLE() {
         return NAME_TABLE;
     }

@@ -283,7 +283,8 @@ public class MainActivity extends AppCompatActivity {
         lnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, OrderActivity.class);
+                startActivity(intent);
             }
         });
         btnLogOut.setOnClickListener(new View.OnClickListener() {

@@ -46,7 +46,7 @@ public class VoucherActivity extends AppCompatActivity {
     ImageView imgBack;
     @Bind(R.id.img_add)
     ImageView imgAdd;
-    @Bind(R.id.lvTable)
+    @Bind(R.id.lvVoucher)
     ListView list;
     ArrayList<Voucher> arrayList;
     VoucherAdapter adapter;
@@ -54,7 +54,7 @@ public class VoucherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table);
+        setContentView(R.layout.activity_voucher);
         ButterKnife.bind(this);
         tvTitle.setText("Quản lý mã giảm giá");
         arrayList = new ArrayList<>();

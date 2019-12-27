@@ -9,7 +9,7 @@
     tools:context="com.example.administrator.ordernow.VoucherActivity">
     <include layout="@layout/toolbar_quan_ly" />
     <ListView
-        android:id="@+id/lvTable"
+        android:id="@+id/lvVoucher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>

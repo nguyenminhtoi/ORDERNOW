@@ -13,13 +13,11 @@ import android.app.AlertDialog;
 
 import java.util.List;
 
-import static android.R.attr.id;
-
 /**
- * Created by Administrator on 22/11/2019.
+ * Created by Administrator on 25/12/2019.
  */
 
-public class TableAdapter extends BaseAdapter{
+public class TableAdapter extends BaseAdapter {
 
     private TableActivity context;
     private int layout;

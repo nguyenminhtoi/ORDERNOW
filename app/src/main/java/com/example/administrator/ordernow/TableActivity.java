@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +40,10 @@ public class TableActivity extends AppCompatActivity {
     String urlDelete = "http://minhtoi96.me/order/list_table/delete.php";
     String urlInsert = "http://minhtoi96.me/order/list_table/Insert.php";
     String urlUpdate = "http://minhtoi96.me/order/list_table/update.php";
+
+    String urlInsertBill = "http://minhtoi96.me/order/bill/Insert.php";
+    String urlDeleteBill = "http://minhtoi96.me/order/bill/delete.php";
+
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
     @Bind(R.id.imgBack)
@@ -125,6 +128,8 @@ public class TableActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
+                            Toast.makeText(TableActivity.this, String.valueOf(id), Toast.LENGTH_SHORT).show();
+                            DeleteBill(id);
                             Toast.makeText(TableActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
                             Intent intent = getIntent();
                             finish();
@@ -161,6 +166,8 @@ public class TableActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
                             Toast.makeText(TableActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                            GetData( Integer.valueOf(id));
+                            InsertBill(edit);
                             Intent intent = getIntent();
                             finish();
                             startActivity(intent);
@@ -269,5 +276,78 @@ public class TableActivity extends AppCompatActivity {
         });
         AlertDialog b = dialogBuilder.create();
         b.show();
+    }
+
+    private void InsertBill(final String iidd){
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlInsertBill,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.trim().equals("success")){
+                            Toast.makeText(TableActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(TableActivity.this, "Thêm không thành công!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(TableActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Log.d("A", "Error!\n" + error.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("ID_USER", id);
+                params.put("NAME_BILL", "abc");
+                params.put("ID_TABLE", iidd);
+                params.put("ID_FOOD", "1 2 3");
+                params.put("ID_VOUCHER", "1");
+                params.put("ID_CUSTOMER", "1");
+                params.put("ID_CREATED", id);
+                params.put("NOTE", "xxx");
+                params.put("TOTAL_PRICE", "1");
+                params.put("STATUS", "1");
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+    public void DeleteBill(final int id){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlDeleteBill,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.trim().equals("success")){
+                            Toast.makeText(TableActivity.this, "Xóa bill thành công", Toast.LENGTH_SHORT).show();
+
+                        }else {
+                            Toast.makeText(TableActivity.this, "Xóa bill không thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(TableActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Log.d("A", "Error!\n" + error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("ID", String.valueOf(id));
+                return params;
+            }
+
+        };
+        requestQueue.add(stringRequest);
     }
 }
