@@ -200,6 +200,7 @@ public class InsertFoodActivity extends AppCompatActivity {
                     params.put("IMAGE", "");
                 }
                 params.put("PRICE", edtPrice.getText().toString().trim());
+                params.put("NUMBER", "0");
                 params.put("NOTE", edtNote.getText().toString().trim());
                 params.put("RANDOM", String.valueOf(random));
 

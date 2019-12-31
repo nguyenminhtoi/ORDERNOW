@@ -64,7 +64,6 @@ import static android.provider.ContactsContract.CommonDataKinds.Note.NOTE;
 public class FoodActivity extends AppCompatActivity {
     String urlGetData = "http://minhtoi96.me/order/list_food/food.php";
     String urlDelete = "http://minhtoi96.me/order/list_food/delete.php";
-    String urlInsert = "http://minhtoi96.me/order/list_food/Insert.php";
     String urlUpdate = "http://minhtoi96.me/order/list_food/update.php";
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
@@ -77,10 +76,7 @@ public class FoodActivity extends AppCompatActivity {
     ArrayList<Food> arrayList;
     FoodAdapter adapter;
     String id;
-    Bitmap FixBitmap;
-    ImageView imgInsert;
 
-    private int GALLERY = 1, CAMERA = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +122,7 @@ public class FoodActivity extends AppCompatActivity {
                                         object.getString("NAME_FOOD"),
                                         object.getString("IMAGE"),
                                         object.getInt("PRICE"),
+                                        object.getInt("NUMBER"),
                                         object.getString("NOTE")
                                 ));
                             } catch (JSONException e) {
@@ -256,81 +253,6 @@ public class FoodActivity extends AppCompatActivity {
         });
         AlertDialog b = dialogBuilder.create();
         b.show();
-    }
-    private void showPictureDialog(){
-        AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
-        pictureDialog.setTitle("Select Action");
-        String[] pictureDialogItems = {
-                "Photo Gallery",
-                "Camera" };
-        pictureDialog.setItems(pictureDialogItems,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                                choosePhotoFromGallary();
-                                break;
-                            case 1:
-                                takePhotoFromCamera();
-                                break;
-                        }
-                    }
-                });
-        pictureDialog.show();
-    }
-
-    public void choosePhotoFromGallary() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-        startActivityForResult(galleryIntent, GALLERY);
-    }
-
-    private void takePhotoFromCamera() {
-        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, CAMERA);
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == this.RESULT_CANCELED) {
-            return;
-        }
-        if (requestCode == GALLERY) {
-            if (data != null) {
-                Uri contentURI = data.getData();
-                try {
-                    FixBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-                    imgInsert.setImageBitmap(FixBitmap);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(FoodActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-        } else if (requestCode == CAMERA) {
-            FixBitmap = (Bitmap) data.getExtras().get("data");
-            imgInsert.setImageBitmap(FixBitmap);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 5) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Now user should be able to use camera
-
-            }
-            else {
-
-                Toast.makeText(FoodActivity.this, "Unable to use Camera..Please Allow us to use Camera", Toast.LENGTH_LONG).show();
-
-            }
-        }
     }
 
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ public class Order3Adapter extends BaseAdapter {
     private class ViewHoler{
         TextView tvNameTable, tvStatus, tvPrice, tvTime;
         RelativeLayout rvBill;
+        ImageView icTable;
     }
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
@@ -57,6 +59,7 @@ public class Order3Adapter extends BaseAdapter {
             holer.tvPrice = (TextView) view.findViewById(R.id.tv_price_bill);
             holer.tvTime = (TextView) view.findViewById(R.id.tv_time);
             holer.rvBill = (RelativeLayout) view.findViewById(R.id.rv_bill);
+            holer.icTable = (ImageView) view.findViewById(R.id.ic_table);
 
             view.setTag(holer);
         }else {
@@ -64,11 +67,10 @@ public class Order3Adapter extends BaseAdapter {
         }
         final Bill3 bill3 = tablelist.get(i);
 
+        holer.icTable.setImageResource(R.drawable.ic_table3);
         holer.tvNameTable.setText(bill3.getNAME_BILL());
         holer.tvTime.setText(bill3.getTIME_CREATED());
-        holer.tvTime.setTextColor(Color.RED);
-        holer.tvStatus.setTextColor(Color.RED);
-        holer.tvNameTable.setTextColor(Color.RED);
+        holer.tvStatus.setTextColor(Color.GREEN);
         holer.tvStatus.setText("Đã thanh toán");
         holer.tvPrice.setText(String.valueOf(bill3.getTOTAL_PRICE()));
         holer.rvBill.setOnClickListener(new View.OnClickListener() {

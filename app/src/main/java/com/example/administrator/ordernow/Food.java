@@ -21,16 +21,19 @@ public class Food implements Serializable {
     private String IMAGE;
     @SerializedName("PRICE")
     private int PRICE;
+    @SerializedName("NUMBER")
+    private int NUMBER;
     @SerializedName("NOTE")
     private String NOTE;
 
 
-    public Food(int ID, int ID_USER, String NAME_FOOD, String IMAGE, int PRICE, String NOTE) {
+    public Food(int ID, int ID_USER, String NAME_FOOD, String IMAGE, int PRICE, int NUMBER, String NOTE) {
         this.ID = ID;
         this.ID_USER = ID_USER;
         this.NAME_FOOD = NAME_FOOD;
         this.IMAGE = IMAGE;
         this.PRICE = PRICE;
+        this.NUMBER = NUMBER;
         this.NOTE = NOTE;
 
     }
@@ -69,6 +72,13 @@ public class Food implements Serializable {
     }
     public void setPRICE(int PRICE) {
         this.PRICE = PRICE;
+    }
+
+    public int getNUMBER() {
+        return NUMBER;
+    }
+    public void setNUMBER(int NUMBER) {
+        this.NUMBER = NUMBER;
     }
 
     public String getNOTE() {

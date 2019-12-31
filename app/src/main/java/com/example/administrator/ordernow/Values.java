@@ -6,4 +6,7 @@ package com.example.administrator.ordernow;
 
 public class Values {
     public static String ID = "1";
+    public static int NUMBER = 0;
+    public static int PRICE = 0;
+    public static String FOOD = "";
 }

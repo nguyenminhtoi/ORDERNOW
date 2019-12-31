@@ -43,6 +43,7 @@ public class TableActivity extends AppCompatActivity {
 
     String urlInsertBill = "http://minhtoi96.me/order/bill/Insert.php";
     String urlDeleteBill = "http://minhtoi96.me/order/bill/delete.php";
+    String urlUpdateBill = "http://minhtoi96.me/order/bill/updateTable.php";
 
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
@@ -253,7 +254,7 @@ public class TableActivity extends AppCompatActivity {
         AlertDialog b = dialogBuilder.create();
         b.show();
     }
-    public void showUpdateDialog(final String i, String name) {
+    public void showUpdateDialog(final String i,final String name) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.dialog_update_table, null);
@@ -266,7 +267,9 @@ public class TableActivity extends AppCompatActivity {
         dialogBuilder.setPositiveButton("Sửa", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //Toast.makeText(TableActivity.this, edt.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                UpdateBill(name, edtUpdate.getText().toString().trim());
                 Update(edtUpdate.getText().toString().trim(), i);
+
             }
         });
         dialogBuilder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
@@ -278,7 +281,7 @@ public class TableActivity extends AppCompatActivity {
         b.show();
     }
 
-    private void InsertBill(final String iidd){
+    private void InsertBill(final String table){
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlInsertBill,
@@ -305,7 +308,7 @@ public class TableActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID_USER", id);
                 params.put("NAME_BILL", "abc");
-                params.put("ID_TABLE", iidd);
+                params.put("ID_TABLE", table);
                 params.put("ID_FOOD", "1 2 3");
                 params.put("ID_VOUCHER", "1");
                 params.put("ID_CUSTOMER", "1");
@@ -313,6 +316,37 @@ public class TableActivity extends AppCompatActivity {
                 params.put("NOTE", "xxx");
                 params.put("TOTAL_PRICE", "1");
                 params.put("STATUS", "1");
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+    public void UpdateBill(final String table, final String nametable ){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlUpdateBill,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.trim().equals("success")){
+                            Toast.makeText(TableActivity.this, "Sửa bill thành công!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(TableActivity.this, "Sửa bill không thành công!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(TableActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Log.d("A", "Error!\n" + error.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("NAME_TABLE", table);
+                params.put("ID_TABLE",nametable);
                 return params;
             }
         };

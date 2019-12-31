@@ -88,6 +88,10 @@ public class OrderActivity extends AppCompatActivity {
         adapter2 = new Order2Adapter(OrderActivity.this, R.layout.list_order, arrayList2);
         lvBill.setAdapter(adapter2);
 
+        arrayList3 = new ArrayList<>();
+        adapter3 = new Order3Adapter(OrderActivity.this, R.layout.list_order, arrayList3);
+        lvPay.setAdapter(adapter3);
+
         lvOrder.setVisibility(View.VISIBLE);
         lvBill.setVisibility(View.VISIBLE);
         lvPay.setVisibility(View.GONE);
@@ -98,6 +102,9 @@ public class OrderActivity extends AppCompatActivity {
                 lvOrder.setVisibility(View.VISIBLE);
                 lvBill.setVisibility(View.VISIBLE);
                 lvPay.setVisibility(View.GONE);
+
+                GetData1( Integer.valueOf(id));
+                GetData2( Integer.valueOf(id));
 
                 btnPay.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 btnPay.setTextColor(getResources().getColor(R.color.white));
@@ -140,6 +147,7 @@ public class OrderActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        arrayList1.clear();
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
@@ -188,6 +196,7 @@ public class OrderActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        arrayList2.clear();
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
