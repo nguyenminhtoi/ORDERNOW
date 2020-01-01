@@ -99,11 +99,11 @@
                             android:id="@+id/imgName"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_bien_so"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true" />
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_bien_so" />
 
                     </RelativeLayout>
                 </LinearLayout>
@@ -275,6 +275,7 @@
 
                     </RelativeLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -299,8 +300,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Điểm tích luỹ"
-                                android:inputType="number"
                                 android:imeOptions="actionDone"
+                                android:inputType="number"
                                 android:maxLines="2" />
                         </android.support.design.widget.TextInputLayout>
 
@@ -316,6 +317,7 @@
 
                     </RelativeLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -349,6 +351,7 @@
 
                     </RelativeLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -372,9 +375,9 @@
                                 android:id="@+id/edt_insert_price_customer"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Giá giảm"
-                                android:inputType="number"
+                                android:hint="% Giá giảm"
                                 android:imeOptions="actionDone"
+                                android:inputType="phone"
                                 android:maxLines="2" />
                         </android.support.design.widget.TextInputLayout>
 

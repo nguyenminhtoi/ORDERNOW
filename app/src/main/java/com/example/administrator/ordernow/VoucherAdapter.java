@@ -66,7 +66,7 @@ public class VoucherAdapter extends BaseAdapter {
         final Voucher voucher = voucherlist.get(i);
 
         holer.tvNameVoucher.setText(voucher.getNAME_VOUCHER());
-        holer.tvPrice.setText(voucher.getPRICE_SALE());
+        holer.tvPrice.setText(String.valueOf(voucher.getPRICE_SALE())+" %");
         holer.tvCode.setText(voucher.getCODE_VOUCHER());
         holer.rvVoucher.setOnClickListener(new View.OnClickListener() {
             @Override

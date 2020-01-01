@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context="com.example.administrator.ordernow.CreateBillActivity">
     <include layout="@layout/toolbar_quan_ly" />
 
@@ -24,7 +23,7 @@
             android:layout_alignParentStart="true"></ListView>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:background="@color/color_while"
             android:orientation="horizontal"
             android:gravity="left|center"
@@ -64,7 +63,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:gravity="right|center"
             android:background="@color/color_while"
             android:orientation="horizontal"
@@ -77,7 +76,7 @@
                 android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tạo bill"
+                android:text="Tạo đơn"
                 android:textAllCaps="false"
                 android:textSize="18dp"
                 android:textColor="@color/white"
@@ -85,7 +84,5 @@
                 android:background="@drawable/drawable_btn_create_account"/>
         </LinearLayout>
     </RelativeLayout>
-
-
 
 </LinearLayout>

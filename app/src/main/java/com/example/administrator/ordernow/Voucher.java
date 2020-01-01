@@ -18,10 +18,10 @@ public class Voucher implements Serializable {
     @SerializedName("CODE_VOUCHER")
     private String CODE_VOUCHER;
     @SerializedName("PRICE_SALE")
-    private String PRICE_SALE;
+    private int PRICE_SALE;
 
 
-    public Voucher(int ID, int ID_USER, String NAME_VOUCHER, String CODE_VOUCHER, String PRICE_SALE) {
+    public Voucher(int ID, int ID_USER, String NAME_VOUCHER, String CODE_VOUCHER, int PRICE_SALE) {
         this.ID = ID;
         this.ID_USER = ID_USER;
         this.NAME_VOUCHER = NAME_VOUCHER;
@@ -59,10 +59,10 @@ public class Voucher implements Serializable {
         this.CODE_VOUCHER = CODE_VOUCHER;
     }
 
-    public String getPRICE_SALE() {
+    public int getPRICE_SALE() {
         return PRICE_SALE;
     }
-    public void setPRICE_SALE(String PRICE_SALE) {
+    public void setPRICE_SALE(int PRICE_SALE) {
         this.PRICE_SALE = PRICE_SALE;
     }
 

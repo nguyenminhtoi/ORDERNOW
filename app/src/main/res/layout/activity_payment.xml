@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.ordernow.PaymentActivity">
+    <include layout="@layout/toolbar_quan_ly" />
+    <RelativeLayout
+        android:id="@+id/rv_bill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cyan_color"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Thanh toán hóa đơn: "
+                    android:textColor="@color/black_color"
+                    android:textSize="25dp"/>
+                <TextView
+                    android:id="@+id/tv_name_table_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Bàn số"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Số bill:  "
+                    android:textColor="@color/black_color"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/tv_name_bill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="xxx"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Phục vụ:  "
+                    android:textColor="@color/black_color"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/tv_name_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nguyễn A"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Thời gian tạo đơn:  "
+                    android:textColor="@color/black_color"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/tv_time_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="00:00:00"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical"
+                android:background="@color/color_while">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Món ăn:"
+                    android:textColor="@color/black_color"
+                    android:textSize="22dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/color_while">
+                <TextView
+                    android:id="@+id/tv_food_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Món 1"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:padding="12dp"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ghi chú: "
+                    android:textColor="@color/black_color"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tv_note_food_pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ghi chú..."
+                    android:textColor="@color/grey_color"
+                    android:textSize="16dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tổng:"
+                    android:textColor="@color/black_color"
+                    android:textSize="20dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:background="@color/color_while">
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="18dp"
+                        android:gravity="right"
+                        android:text="0"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text=" Đ"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thành viên:"
+                    android:textColor="@color/black_color"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/edt_customer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nhập mã thành viên..."
+                    android:textColorHint="@color/grey_color"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Voucher:"
+                    android:textColor="@color/black_color"
+                    android:textSize="20dp"/>
+                <EditText
+                    android:id="@+id/edt_voucher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nhập mã voucher:"
+                    android:textColorHint="@color/grey_color"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tổng giảm:"
+                    android:textColor="@color/black_color"
+                    android:textSize="20dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:background="@color/color_while">
+
+                    <TextView
+                        android:id="@+id/tv_price_sale_pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="18dp"
+                        android:gravity="right"
+                        android:text="0"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text=" Đ"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:background="@color/color_while">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tổng thanh toán:"
+                    android:textColor="@color/black_color"
+                    android:textSize="22dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:background="@color/color_while">
+                    <TextView
+                        android:id="@+id/tv_total_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="18dp"
+                        android:gravity="right"
+                        android:text="0"
+                        android:textColor="@color/red_color"
+                        android:textSize="22dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text=" Đ"
+                        android:textColor="@color/red_color"
+                        android:textSize="22dp"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_while"
+            android:orientation="horizontal"
+            android:gravity="left|center"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:id="@+id/tv_price_total"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_color"
+                android:text="0"
+                android:textSize="25dp" />
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_color"
+                android:text="Đ"
+                android:textSize="23dp" />
+
+            />
+
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="115dp"
+            android:layout_height="50dp"
+            android:gravity="right|center"
+            android:background="@color/color_while"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/linearLayout">
+            <Button
+                android:id="@+id/btn_pay_bill"
+                android:layout_margin="5dp"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="Thanh toán"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/drawable_btn_create_account"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

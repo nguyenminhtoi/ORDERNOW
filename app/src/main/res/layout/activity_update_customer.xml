@@ -372,7 +372,7 @@
                                 android:id="@+id/edt_update_price_customer"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Giá giảm"
+                                android:hint="% Giảm giá"
                                 android:inputType="number"
                                 android:imeOptions="actionDone"
                                 android:maxLines="2" />

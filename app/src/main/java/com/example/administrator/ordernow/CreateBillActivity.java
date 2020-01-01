@@ -41,7 +41,6 @@ public class CreateBillActivity extends AppCompatActivity {
     String urlGetData = "http://minhtoi96.me/order/list_food/food.php";
 
     String urlUpdateBill = "http://minhtoi96.me/order/bill/updateTable.php";
-    String urlInsertBill = "http://minhtoi96.me/order/bill/Insert.php";
 
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
@@ -70,7 +69,7 @@ public class CreateBillActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_bill);
         ButterKnife.bind(this);
-        tvTitle.setText("Tạo order");
+        tvTitle.setText("Tạo đơn");
         arrayList = new ArrayList<>();
         adapter = new CreateBillAdapter(this, R.layout.list_food_chose, arrayList);
         list.setAdapter(adapter);
@@ -96,12 +95,7 @@ public class CreateBillActivity extends AppCompatActivity {
                 finish();
             }
         });
-        imgAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(CreateBillActivity.this, nameBill, Toast.LENGTH_SHORT).show();
-            }
-        });
+        imgAdd.setVisibility(View.GONE);
         btnBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -93,7 +93,7 @@ public class VoucherActivity extends AppCompatActivity {
                                         object.getInt("ID_USER"),
                                         object.getString("NAME_VOUCHER"),
                                         object.getString("CODE_VOUCHER"),
-                                        object.getString("PRICE_SALE")
+                                        object.getInt("PRICE_SALE")
                                 ));
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -154,7 +154,7 @@ public class VoucherActivity extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
-    private void Insert(final String name, final String code, final String price){
+    private void Insert(final String name, final String code, final int price){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlInsert,
                 new Response.Listener<String>() {
@@ -184,13 +184,13 @@ public class VoucherActivity extends AppCompatActivity {
                 params.put("ID_USER", id);
                 params.put("NAME_VOUCHER", name);
                 params.put("CODE_VOUCHER", code);
-                params.put("PRICE_SALE", price);
+                params.put("PRICE_SALE", String.valueOf(price));
                 return params;
             }
         };
         requestQueue.add(stringRequest);
     }
-    public void Update(final String name, final String code, final String price,final String i){
+    public void Update(final String name, final String code, final int price,final String i){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlUpdate,
                 new Response.Listener<String>() {
@@ -221,7 +221,7 @@ public class VoucherActivity extends AppCompatActivity {
                 params.put("ID_USER", id);
                 params.put("NAME_VOUCHER", name);
                 params.put("CODE_VOUCHER", code);
-                params.put("PRICE_SALE", price);
+                params.put("PRICE_SALE", String.valueOf(price));
                 return params;
             }
         };
@@ -239,11 +239,15 @@ public class VoucherActivity extends AppCompatActivity {
         final EditText edtPrice = (EditText) dialogView.findViewById(R.id.edit_Price);
 
         dialogBuilder.setTitle("THÊM VOUCHER");
-        dialogBuilder.setMessage("Nhập tên voucher");
         dialogBuilder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //Toast.makeText(VoucherActivity.this, edt.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-                Insert(edtName.getText().toString().trim(), edtCode.getText().toString().trim(), edtPrice.getText().toString().trim());
+                if( Integer.valueOf(edtPrice.getText().toString())>100){
+                    Toast.makeText(VoucherActivity.this, "Không thể giảm giá hơn 100% !", Toast.LENGTH_SHORT).show();
+                }else {
+                    Insert(edtName.getText().toString().trim(), edtCode.getText().toString().trim(),  Integer.valueOf(edtPrice.getText().toString()));
+                }
+
             }
         });
         dialogBuilder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
@@ -254,7 +258,7 @@ public class VoucherActivity extends AppCompatActivity {
         AlertDialog b = dialogBuilder.create();
         b.show();
     }
-    public void showUpdateDialog(final String i, String name, String code, String price) {
+    public void showUpdateDialog(final String i, String name, String code, int price) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.dialog_update_voucher, null);
@@ -266,14 +270,17 @@ public class VoucherActivity extends AppCompatActivity {
 
         edtName.setText(name);
         edtCode.setText(code);
-        edtPrice.setText(price);
+        edtPrice.setText(String.valueOf(price));
 
         dialogBuilder.setTitle("SỬA TÊN VOUCHER");
-        dialogBuilder.setMessage("Nhập tên voucher mới");
         dialogBuilder.setPositiveButton("Sửa", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //Toast.makeText(VoucherActivity.this, edt.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-                Update(edtName.getText().toString().trim(),edtCode.getText().toString().trim(),edtPrice.getText().toString().trim(), i);
+                if( Integer.valueOf(edtPrice.getText().toString())>100){
+                    Toast.makeText(VoucherActivity.this, "Không thể giảm giá hơn 100% !", Toast.LENGTH_SHORT).show();
+                }else {
+                    Update(edtName.getText().toString().trim(), edtCode.getText().toString().trim(), Integer.valueOf(edtPrice.getText().toString()), i);
+                }
             }
         });
         dialogBuilder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {

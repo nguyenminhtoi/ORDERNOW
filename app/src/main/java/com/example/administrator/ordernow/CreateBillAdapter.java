@@ -98,8 +98,10 @@ public class CreateBillAdapter extends BaseAdapter {
 
                 food.setNUMBER(food.getNUMBER() + 1);
                 Values.PRICE = Values.PRICE + food.getPRICE();
-                if(FOOD.contains(food.getNAME_FOOD()) == false){
-                    FOOD = FOOD + food.getNAME_FOOD() + ",";
+                if(Values.FOOD.contains(food.getNAME_FOOD()) == false){
+                    Values.FOOD = Values.FOOD + food.getNAME_FOOD() + "(" + "x" + String.valueOf(food.getNUMBER()) + ")"+ " ";
+                }else {
+                    Values.FOOD = Values.FOOD.replace(food.getNAME_FOOD() + "(" + "x" + String.valueOf(food.getNUMBER() - 1) + ")"+ " ", food.getNAME_FOOD() + "(" + "x" + String.valueOf(food.getNUMBER()) + ")"+ " ");
                 }
 
                 holer.tvNumber.setText(String.valueOf(food.getNUMBER()));
@@ -107,7 +109,7 @@ public class CreateBillAdapter extends BaseAdapter {
                 holer.tvNumber.setVisibility(View.VISIBLE);
 
                 context.showPrice(Values.PRICE);
-                context.showFood(FOOD);
+                context.showFood(Values.FOOD);
             }
         });
         holer.icRemove.setOnClickListener(new View.OnClickListener() {
@@ -117,16 +119,18 @@ public class CreateBillAdapter extends BaseAdapter {
 
                 food.setNUMBER(food.getNUMBER() - 1);
                 if(food.getNUMBER() == 0){
-                    Values.FOOD = Values.FOOD.replace(food.getNAME_FOOD()+",", "");
+                    Values.FOOD = Values.FOOD.replace(food.getNAME_FOOD() + "(" + "x" + String.valueOf(food.getNUMBER() + 1) + ")"+ " ", "");
 
                     holer.icRemove.setVisibility(View.GONE);
                     holer.tvNumber.setVisibility(View.GONE);
                     context.showPrice(Values.PRICE);
                     context.showFood(Values.FOOD);
                 }else {
+                    Values.FOOD = Values.FOOD.replace(food.getNAME_FOOD() + "(" + "x" + String.valueOf(food.getNUMBER() + 1) + ")"+ " ", food.getNAME_FOOD() + "(" + "x" + String.valueOf(food.getNUMBER()) + ")"+ " ");
                     holer.tvNumber.setText(String.valueOf(food.getNUMBER()));
                     context.showPrice(Values.PRICE);
-                    context.showFood(FOOD);
+                    context.showFood(Values.FOOD);
+
                 }
             }
         });

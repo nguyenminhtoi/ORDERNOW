@@ -137,11 +137,14 @@ public class UpdateCustomerActivity extends AppCompatActivity {
                 if(edtName.getText().toString().trim().equals("")
                         ||edtCode.getText().toString().trim().equals("")
                         ||edtScore.getText().toString().trim().equals("")
+                        ||edtPrice.getText().toString().trim().equals("")
                         ||edtPhone.getText().toString().trim().equals("")
                         ){
                     Toast.makeText(UpdateCustomerActivity.this, "Vui lòng nhập đủ thông tin !", Toast.LENGTH_SHORT).show();
                 }else if(sex.equals("Chọn giới tính")){
                     Toast.makeText(UpdateCustomerActivity.this, "Vui lòng chọn giới tính !", Toast.LENGTH_SHORT).show();
+                }else if( Integer.valueOf(edtPrice.getText().toString())>100){
+                    Toast.makeText(UpdateCustomerActivity.this, "Không thể giảm giá hơn 100% !", Toast.LENGTH_SHORT).show();
                 }
                 else if(level.equals("Chọn loại khách hàng")){
                     Toast.makeText(UpdateCustomerActivity.this, "Vui lòng chọn loại khách hàng !", Toast.LENGTH_SHORT).show();

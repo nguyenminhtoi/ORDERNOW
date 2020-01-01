@@ -68,7 +68,7 @@ public class Order3Adapter extends BaseAdapter {
         final Bill3 bill3 = tablelist.get(i);
 
         holer.icTable.setImageResource(R.drawable.ic_table3);
-        holer.tvNameTable.setText(bill3.getNAME_BILL());
+        holer.tvNameTable.setText(bill3.getID_TABLE());
         holer.tvTime.setText(bill3.getTIME_CREATED());
         holer.tvStatus.setTextColor(Color.GREEN);
         holer.tvStatus.setText("Đã thanh toán");

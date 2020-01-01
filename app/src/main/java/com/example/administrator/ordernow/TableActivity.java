@@ -307,14 +307,14 @@ public class TableActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID_USER", id);
-                params.put("NAME_BILL", "abc");
+                params.put("NAME_BILL", "no");
                 params.put("ID_TABLE", table);
-                params.put("ID_FOOD", "1 2 3");
-                params.put("ID_VOUCHER", "1");
-                params.put("ID_CUSTOMER", "1");
+                params.put("ID_FOOD", "0");
+                params.put("ID_VOUCHER", "0");
+                params.put("ID_CUSTOMER", "0");
                 params.put("ID_CREATED", id);
                 params.put("NOTE", "xxx");
-                params.put("TOTAL_PRICE", "1");
+                params.put("TOTAL_PRICE", "0");
                 params.put("STATUS", "1");
                 return params;
             }

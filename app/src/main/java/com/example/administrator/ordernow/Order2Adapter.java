@@ -1,6 +1,7 @@
 package com.example.administrator.ordernow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.provider.CalendarContract;
 import android.view.LayoutInflater;
@@ -70,7 +71,7 @@ public class Order2Adapter extends BaseAdapter {
         }
         final Bill2 bill2 = tablelist.get(i);
 
-        holer.tvNameTable.setText(bill2.getNAME_BILL());
+        holer.tvNameTable.setText(bill2.getID_TABLE());
         holer.tvTime.setText(bill2.getTIME_CREATED());
         holer.tvStatus.setText("Đã gọi món");
         holer.tvStatus.setTextColor(Color.RED);
@@ -81,17 +82,13 @@ public class Order2Adapter extends BaseAdapter {
         holer.rvBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //context.showUpdateDialog(String.valueOf(table.getID()),table.getNAME_TABLE());
+                Intent intent = new Intent(context, PaymentActivity.class);
+                intent.putExtra("dataPay", bill2);
+                context.startActivity(intent);
+                context.finish();
             }
         });
-        holer.rvBill.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                //Xoa(bill1.getNAME_BILL(),bill1.getID());
-                //Toast.makeText(context, "Đang xoá", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
+
 
         return view;
     }

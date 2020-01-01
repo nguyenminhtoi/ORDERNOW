@@ -85,7 +85,7 @@ public class CustomerAdapter extends BaseAdapter {
 
         holer.tvBirth.setText(customer.getBIRTHDAY());
         holer.tvCode.setText(customer.getCODE_CUSTOMER());
-        holer.tvPrice.setText(String.valueOf(customer.getPRICE_SALE()));
+        holer.tvPrice.setText(String.valueOf(customer.getPRICE_SALE())+" %");
         holer.rvCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
