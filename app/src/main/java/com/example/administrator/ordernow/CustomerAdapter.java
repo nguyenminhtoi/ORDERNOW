@@ -50,7 +50,7 @@ public class CustomerAdapter extends BaseAdapter {
         return 0;
     }
     private class ViewHoler{
-        TextView tvName, tvBirth, tvCode, tvPrice;
+        TextView tvName, tvBirth, tvCode, tvPrice, tvScore;
         RelativeLayout rvCustomer;
         ImageView imgLevel;
     }
@@ -65,6 +65,7 @@ public class CustomerAdapter extends BaseAdapter {
             holer.imgLevel = (ImageView) view.findViewById(R.id.ic_level);
             holer.tvBirth = (TextView) view.findViewById(R.id.tv_birthday);
             holer.tvCode = (TextView) view.findViewById(R.id.tv_code_sale);
+            holer.tvScore = (TextView) view.findViewById(R.id.tv_score);
             holer.tvPrice = (TextView) view.findViewById(R.id.tv_price_sale);
             holer.rvCustomer = (RelativeLayout) view.findViewById(R.id.rv_customer);
 
@@ -85,6 +86,7 @@ public class CustomerAdapter extends BaseAdapter {
 
         holer.tvBirth.setText(customer.getBIRTHDAY());
         holer.tvCode.setText(customer.getCODE_CUSTOMER());
+        holer.tvScore.setText(String.valueOf(customer.getSCORE())+" Đ");
         holer.tvPrice.setText(String.valueOf(customer.getPRICE_SALE())+" %");
         holer.rvCustomer.setOnClickListener(new View.OnClickListener() {
             @Override

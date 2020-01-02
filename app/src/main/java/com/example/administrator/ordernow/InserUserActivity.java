@@ -150,7 +150,7 @@ public class InserUserActivity extends AppCompatActivity {
         }
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
-            id_created = sharedPreferences.getString("id", "90");
+            id_created = sharedPreferences.getString("iduser", "90");
             nameStore = sharedPreferences.getString("name_store", "90");
         }
         role = "2";

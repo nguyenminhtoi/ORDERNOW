@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.ordernow.PaymentActivity">
+    tools:context="com.example.administrator.ordernow.PaidActivity">
     <include layout="@layout/toolbar_quan_ly" />
     <RelativeLayout
-        android:id="@+id/rv_bill"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/cyan_color"
@@ -27,7 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Thanh toán hóa đơn: "
+                    android:text="Hóa đơn đã thanh toán: "
                     android:textColor="@color/black_color"
                     android:textSize="25dp"/>
                 <TextView
@@ -90,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Thời gian tạo đơn:  "
+                    android:text="Thời gian thanh toán:  "
                     android:textColor="@color/black_color"
                     android:textSize="20dp"/>
                 <TextView
@@ -194,6 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:padding="10dp"
                 android:orientation="horizontal"
                 android:background="@color/color_while">
 
@@ -205,7 +205,7 @@
                     android:textColor="@color/black_color"
                     android:textSize="20dp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edt_customer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,6 +219,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:padding="10dp"
                 android:orientation="horizontal"
                 android:background="@color/color_while">
                 <TextView
@@ -228,7 +229,7 @@
                     android:text="Voucher:"
                     android:textColor="@color/black_color"
                     android:textSize="20dp"/>
-                <EditText
+                <TextView
                     android:id="@+id/edt_voucher"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -345,7 +346,7 @@
             />
         </LinearLayout>
         <LinearLayout
-            android:layout_width="115dp"
+            android:layout_width="200dp"
             android:layout_height="50dp"
             android:gravity="right|center"
             android:background="@color/color_while"
@@ -357,9 +358,9 @@
             <Button
                 android:id="@+id/btn_pay_bill"
                 android:layout_margin="5dp"
-                android:layout_width="110dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thanh toán"
+                android:text="Chi tiết giảm giá"
                 android:textAllCaps="false"
                 android:textSize="18dp"
                 android:textColor="@color/white"

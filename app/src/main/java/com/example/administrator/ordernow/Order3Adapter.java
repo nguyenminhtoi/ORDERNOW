@@ -1,6 +1,7 @@
 package com.example.administrator.ordernow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,7 +77,10 @@ public class Order3Adapter extends BaseAdapter {
         holer.rvBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //context.showUpdateDialog(String.valueOf(table.getID()),table.getNAME_TABLE());
+                Intent intent = new Intent(context, PaidActivity.class);
+                intent.putExtra("dataPaid", bill3);
+                context.startActivity(intent);
+                context.finish();
             }
         });
         holer.rvBill.setOnLongClickListener(new View.OnLongClickListener() {

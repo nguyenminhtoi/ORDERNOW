@@ -61,7 +61,7 @@ public class CreateBillActivity extends AppCompatActivity {
     ListView list;
     ArrayList<Food> arrayList;
     CreateBillAdapter adapter;
-    String id, idBill, nameBill, food, nameTable;
+    String id, idBill, nameBill, food, nameTable, id_created;
 
 
     @Override
@@ -76,6 +76,7 @@ public class CreateBillActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
             id = sharedPreferences.getString("id", "90");
+            id_created = sharedPreferences.getString("iduser", "90");
         }
 
         Values.PRICE = 0;
@@ -177,7 +178,7 @@ public class CreateBillActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID", idBill);
                 params.put("NAME_BILL", nameBill);
-                params.put("ID_CREATED", id);
+                params.put("ID_CREATED", id_created);
                 params.put("ID_FOOD", food);
                 params.put("NOTE", editNote.getText().toString().trim());
                 params.put("TOTAL_PRICE", tvTotal.getText().toString().trim());

@@ -36,12 +36,7 @@ public class OrderActivity extends AppCompatActivity {
     String urlGetData1 = "http://minhtoi96.me/order/bill/bill1.php";
     String urlGetData2 = "http://minhtoi96.me/order/bill/bill2.php";
     String urlGetData3 = "http://minhtoi96.me/order/bill/bill3.php";
-    String urlDelete = "http://minhtoi96.me/order/bill/delete.php";
-    String urlInsert = "http://minhtoi96.me/order/bill/Insert.php";
-    String urlUpdate = "http://minhtoi96.me/order/bill/update.php";
 
-    String urlGetData = "http://minhtoi96.me/order/list_table/table.php";
-    
     @Bind(R.id.back)
     ImageView imgBack;
     @Bind(R.id.btn_order)

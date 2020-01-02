@@ -55,7 +55,7 @@ public class TableActivity extends AppCompatActivity {
     ListView list;
     ArrayList<Table> arrayList;
     TableAdapter adapter;
-    String id;
+    String id, id_created;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +68,7 @@ public class TableActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
             id = sharedPreferences.getString("id", "90");
+            id_created = sharedPreferences.getString("iduser", "90");
         }
         GetData( Integer.valueOf(id));
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -312,7 +313,7 @@ public class TableActivity extends AppCompatActivity {
                 params.put("ID_FOOD", "0");
                 params.put("ID_VOUCHER", "0");
                 params.put("ID_CUSTOMER", "0");
-                params.put("ID_CREATED", id);
+                params.put("ID_CREATED", id_created);
                 params.put("NOTE", "xxx");
                 params.put("TOTAL_PRICE", "0");
                 params.put("STATUS", "1");

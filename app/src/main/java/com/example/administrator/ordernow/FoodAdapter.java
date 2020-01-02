@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -96,8 +97,9 @@ public class FoodAdapter extends BaseAdapter {
         holer.rvFood.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Xoa(food.getNAME_FOOD(),food.getID(),food.getIMAGE());
-                //Toast.makeText(context, "Đang xoá", Toast.LENGTH_SHORT).show();
+
+                Xoa(food.getNAME_FOOD(),food.getID(),food.getIMAGE().replace("http://minhtoi96.me/order/list_food/",""));
+                //Toast.makeText(context, food.getIMAGE().replace("http://minhtoi96.me/order/list_food/",""), Toast.LENGTH_SHORT).show();
                 return true;
             }
         });

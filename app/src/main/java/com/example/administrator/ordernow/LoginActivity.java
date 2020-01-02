@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences("login", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("log", "1");
-                            editor.putString("id", String.valueOf(user.getID()));
+
                             editor.putString("user", user.getUSER());
                             editor.putString("pass", user.getPASSWORD());
                             editor.putString("fullname", user.getFULLNAME());
@@ -128,7 +128,14 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("phone", String.valueOf(user.getPHONE()));
                             editor.putString("email", user.getEMAIL());
                             editor.putString("role", String.valueOf(user.getROLE()));
-                            editor.putString("id_created", String.valueOf(user.getID_CREATED()));
+                            if(String.valueOf(user.getID_CREATED()).equals("1")){
+                                editor.putString("id", String.valueOf(user.getID()));
+                                editor.putString("iduser", String.valueOf(user.getID()));
+                            }else {
+                                editor.putString("iduser", String.valueOf(user.getID()));
+                                editor.putString("id", String.valueOf(user.getID_CREATED()));
+                            }
+
                             if (checkBox.isChecked()) {
                                 editor.putString("cbx", "1");
                             } else {
