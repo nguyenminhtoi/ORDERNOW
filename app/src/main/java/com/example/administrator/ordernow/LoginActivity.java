@@ -142,9 +142,15 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putString("cbx", "0");
                             }
                             editor.apply();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                            if(String.valueOf(user.getID_CREATED()).equals("1")){
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }else {
+                                Intent intent = new Intent(LoginActivity.this, OrderActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         } else if (edtPass.getText().toString().equals("")) {
                             edtPass.setError("Bạn chưa nhập mật khẩu");

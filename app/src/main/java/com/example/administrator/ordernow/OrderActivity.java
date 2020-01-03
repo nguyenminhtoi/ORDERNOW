@@ -1,6 +1,7 @@
 package com.example.administrator.ordernow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,7 +61,7 @@ public class OrderActivity extends AppCompatActivity {
     Order1Adapter adapter1;
     Order2Adapter adapter2;
     Order3Adapter adapter3;
-    String id;
+    String id, role;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,9 @@ public class OrderActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
             id = sharedPreferences.getString("id", "90");
+            role = sharedPreferences.getString("role", "90");
         }
+
         GetData1( Integer.valueOf(id));
         GetData2( Integer.valueOf(id));
 
@@ -128,10 +131,17 @@ public class OrderActivity extends AppCompatActivity {
 
             }
         });
+
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                if(role.equals("2")){
+                    Intent intent = new Intent(OrderActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    finish();
+                }
             }
         });
         

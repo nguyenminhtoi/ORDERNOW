@@ -48,7 +48,8 @@
         <activity android:name=".UpdateFoodActivity" />
         <activity android:name=".CreateBillActivity" />
         <activity android:name=".PaymentActivity" />
-        <activity android:name=".PaidActivity"></activity>
+        <activity android:name=".PaidActivity" />
+        <activity android:name=".ReportActivity"></activity>
     </application>
 
 </manifest>

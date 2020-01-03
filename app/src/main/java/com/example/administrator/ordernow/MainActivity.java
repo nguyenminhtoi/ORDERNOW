@@ -4,11 +4,13 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -98,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.spn_gioitinh)
     Spinner spinnerGT;
 
-
-    boolean t;
     String id, user, pass, fullname, name_store, birthday, address, sex, phone, email, role, id_created;
     ArrayList<User> arrayList;
     @Override
@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        t = false;
         String [] gioitinh = {"Chọn giới tính","Nam", "Nữ"};
         ArrayAdapter<String> adapterGT = new ArrayAdapter<String>(this, R.layout.spinner_info, R.id.textSpin, gioitinh);
         spinnerGT.setAdapter(adapterGT);
@@ -116,6 +115,13 @@ public class MainActivity extends AppCompatActivity {
         setEventClick();
         setEventInfo();
         thongTin();
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+        //Toast.makeText(MainActivity.this, "Width: " + width + ", " + "height: " + height, Toast.LENGTH_LONG).show();
     }
     private void thongTin(){
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
@@ -133,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             phone = sharedPreferences.getString("phone", "90");
             email = sharedPreferences.getString("email", "90");
             role = sharedPreferences.getString("role", "90");
-            id_created = sharedPreferences.getString("id_created", "90");
+            id_created = sharedPreferences.getString("iduser", "90");
 
             edtUser.setText(user);
             edtPass.setText(pass);
@@ -151,18 +157,21 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(role.equals("2")){
-                edtQuyen.setText("Nhân Viên");
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }else if (role.equals("1")){
                 edtQuyen.setText("Quản lý");
             }else {
                 edtQuyen.setText("ADMIN");
             }
 
-            if (login.equals("1")) {
+            if(login.equals("1")) {
             }else {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
+                //Toast.makeText(MainActivity.this, id_created, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -221,63 +230,45 @@ public class MainActivity extends AppCompatActivity {
         lnDsBan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(role.equals("2")){
-                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
-                }else {
-                    Intent intent = new Intent(MainActivity.this, TableActivity.class);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(MainActivity.this, TableActivity.class);
+                startActivity(intent);
+
             }
         });
         lnDsKhach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(role.equals("2")){
-                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
-                }else {
-                    Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
+                startActivity(intent);
             }
         });
 
         lnDsMon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(role.equals("2")){
-                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
-                }else {
-                    Intent intent = new Intent(MainActivity.this, FoodActivity.class);
+                Intent intent = new Intent(MainActivity.this, FoodActivity.class);
                     startActivity(intent);
-                }
             }
         });
         lnDoanhThu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, ReportActivity.class);
+                startActivity(intent);
             }
         });
         lnMaGiamGia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(role.equals("2")){
-                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
-                }else {
-                    Intent intent = new Intent(MainActivity.this, VoucherActivity.class);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(MainActivity.this, VoucherActivity.class);
+                startActivity(intent);
             }
         });
         lnQuanLy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(role.equals("2")){
-                    Toast.makeText(MainActivity.this, "Quyền truy cập bị hạn chế", Toast.LENGTH_SHORT).show();
-                }else {
-                    Intent intent = new Intent(MainActivity.this, ManagerUserActivity.class);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(MainActivity.this, ManagerUserActivity.class);
+                startActivity(intent);
             }
         });
         lnOrder.setOnClickListener(new View.OnClickListener() {
