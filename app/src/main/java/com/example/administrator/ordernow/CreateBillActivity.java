@@ -168,7 +168,7 @@ public class CreateBillActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(CreateBillActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateBillActivity.this, "Bạn chưa chọn món!", Toast.LENGTH_SHORT).show();
                         Log.d("A", "Error!" + error.toString());
                     }
                 }

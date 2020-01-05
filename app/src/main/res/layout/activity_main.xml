@@ -31,33 +31,84 @@
              android:background="@color/color_status"
              android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/img_deplay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-               />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@color/color_status"
                 android:orientation="horizontal">
 
                <LinearLayout
-                   android:id="@+id/ds_ban"
-                   android:layout_width="120dp"
-                   android:layout_height="115dp"
+                   android:id="@+id/order"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
                    android:layout_marginLeft="5dp"
                    android:background="@color/color_while"
                    android:gravity="center"
                    android:orientation="vertical">
 
                   <ImageView
-                      android:id="@+id/imageView"
+                      android:id="@+id/imgOrder"
                       android:layout_width="105dp"
                       android:layout_height="90dp"
-                      android:background="@drawable/ic_ban" />
+                      android:background="@drawable/ds_ban" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:text="Order"
+                      android:textColor="@color/red_color"
+                      android:textSize="16dp" />
+               </LinearLayout>
+               <LinearLayout
+                   android:id="@+id/doanh_thu"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="5dp"
+                   android:layout_marginRight="5dp"
+                   android:background="@color/color_while"
+                   android:gravity="center"
+                   android:orientation="vertical">
+
+                  <ImageView
+                      android:id="@+id/imgReport"
+                      android:layout_width="105dp"
+                      android:layout_height="90dp"
+                      android:background="@drawable/doanh_so" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:text="Doanh thu"
+                      android:textColor="@color/red_color"
+                      android:textSize="16dp" />
+               </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_status"
+                android:orientation="horizontal">
+
+               <LinearLayout
+                   android:id="@+id/ds_ban"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="5dp"
+                   android:background="@color/color_while"
+                   android:gravity="center"
+                   android:orientation="vertical">
+
+                  <ImageView
+                      android:id="@+id/imgTable"
+                      android:layout_width="105dp"
+                      android:layout_height="90dp"
+                      android:background="@drawable/ic_table" />
 
                   <TextView
                       android:layout_width="wrap_content"
@@ -70,14 +121,16 @@
 
                <LinearLayout
                    android:id="@+id/ds_mon"
-                   android:layout_width="120dp"
-                   android:layout_height="115dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
                    android:layout_marginLeft="5dp"
+                   android:layout_marginRight="5dp"
                    android:background="@color/color_while"
                    android:gravity="center"
                    android:orientation="vertical">
 
                   <ImageView
+                      android:id="@+id/imgFood"
                       android:layout_width="105dp"
                       android:layout_height="90dp"
                       android:background="@drawable/ic_mon" />
@@ -91,17 +144,26 @@
                       android:textSize="15dp" />
                </LinearLayout>
 
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_status"
+                android:orientation="horizontal">
                <LinearLayout
                    android:id="@+id/ds_khach_hang"
-                   android:layout_width="120dp"
-                   android:layout_height="115dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
                    android:layout_marginLeft="5dp"
                    android:background="@color/color_while"
                    android:gravity="center"
                    android:orientation="vertical">
 
                   <ImageView
-                      android:id="@+id/imageView2"
+                      android:id="@+id/imgCustomer"
                       android:layout_width="105dp"
                       android:layout_height="90dp"
                       android:background="@drawable/ds_khach" />
@@ -114,27 +176,19 @@
                       android:textColor="@color/red_color"
                       android:textSize="15dp" />
 
-
                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:background="@color/color_status"
-                android:orientation="horizontal">
-
                <LinearLayout
                    android:id="@+id/ma_giam_gia"
-                   android:layout_width="120dp"
-                   android:layout_height="115dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
                    android:layout_marginLeft="5dp"
+                   android:layout_marginRight="5dp"
                    android:background="@color/color_while"
                    android:gravity="center"
                    android:orientation="vertical">
 
                   <ImageView
-                      android:id="@+id/imageView5"
+                      android:id="@+id/imgVoucher"
                       android:layout_width="105dp"
                       android:layout_height="90dp"
                       android:background="@drawable/ic_voucher" />
@@ -149,105 +203,37 @@
                       android:textSize="16dp" />
                </LinearLayout>
 
-               <LinearLayout
-                   android:id="@+id/doanh_thu"
-                   android:layout_width="120dp"
-                   android:layout_height="115dp"
-                   android:layout_marginLeft="5dp"
-                   android:background="@color/color_while"
-                   android:gravity="center"
-                   android:orientation="vertical">
-
-                  <ImageView
-                      android:id="@+id/imageView3"
-                      android:layout_width="105dp"
-                      android:layout_height="90dp"
-                      android:background="@drawable/doanh_so" />
-
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="center"
-                      android:text="Doanh thu"
-                      android:textColor="@color/red_color"
-                      android:textSize="16dp" />
-               </LinearLayout>
-
-               <LinearLayout
-                   android:id="@+id/quan_ly"
-                   android:layout_width="120dp"
-                   android:layout_height="115dp"
-                   android:layout_marginLeft="5dp"
-                   android:background="@color/color_while"
-                   android:gravity="center"
-                   android:orientation="vertical">
-
-                  <ImageView
-                      android:id="@+id/imageView4"
-                      android:layout_width="105dp"
-                      android:layout_height="90dp"
-                      android:background="@drawable/ic_manager" />
-
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="center"
-                      android:text="Quản lý User"
-                      android:textColor="@color/red_color"
-                      android:textSize="16dp" />
-               </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:id="@+id/quan_ly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="@color/color_status"
-                android:orientation="horizontal">
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@color/color_while"
+                android:gravity="center"
+                android:orientation="vertical">
 
-               <LinearLayout
-                   android:id="@+id/order"
-                   android:layout_width="120dp"
-                   android:layout_height="115dp"
-                   android:layout_marginLeft="5dp"
-                   android:background="@color/color_while"
-                   android:gravity="center"
-                   android:orientation="vertical">
+               <ImageView
+                   android:id="@+id/imgUser"
+                   android:layout_width="105dp"
+                   android:layout_height="90dp"
+                   android:background="@drawable/ic_manager" />
 
-                  <ImageView
-                      android:id="@+id/imageOrder"
-                      android:layout_width="105dp"
-                      android:layout_height="90dp"
-                      android:background="@drawable/ds_ban" />
-
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="center"
-                      android:text="Order"
-                      android:textColor="@color/red_color"
-                      android:textSize="16dp" />
-               </LinearLayout>
+               <TextView
+                   android:id="@+id/textView2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:text="Quản lý User"
+                   android:textColor="@color/red_color"
+                   android:textSize="16dp" />
             </LinearLayout>
          </LinearLayout>
-
-
-
       </ScrollView>
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:gravity="bottom">
-
-         <ImageView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-
-             />
-      </LinearLayout>
    </LinearLayout>
    </RelativeLayout>
-
    <include layout="@layout/info"/>
 </android.support.v4.widget.DrawerLayout>

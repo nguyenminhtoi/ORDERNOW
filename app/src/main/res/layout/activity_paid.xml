@@ -209,7 +209,7 @@
                     android:id="@+id/edt_customer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nhập mã thành viên..."
+                    android:hint=""
                     android:textColorHint="@color/grey_color"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18dp"/>
@@ -233,7 +233,7 @@
                     android:id="@+id/edt_voucher"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nhập mã voucher:"
+                    android:hint=":"
                     android:textColorHint="@color/grey_color"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18dp"/>

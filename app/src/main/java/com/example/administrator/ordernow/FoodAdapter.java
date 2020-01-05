@@ -24,7 +24,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import static com.example.administrator.ordernow.R.id.imageView;
 
 /**
  * Created by Administrator on 16/12/2019.

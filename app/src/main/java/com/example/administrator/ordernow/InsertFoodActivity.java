@@ -42,8 +42,6 @@ import java.util.Random;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static android.R.attr.id;
-import static com.example.administrator.ordernow.R.id.imageView;
 
 
 public class InsertFoodActivity extends AppCompatActivity {

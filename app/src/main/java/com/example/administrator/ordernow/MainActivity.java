@@ -71,6 +71,21 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.imgHide)
     ImageView imgHide;
 
+    @Bind(R.id.imgOrder)
+    ImageView imgOrder;
+    @Bind(R.id.imgReport)
+    ImageView imgReport;
+    @Bind(R.id.imgTable)
+    ImageView imgTable;
+    @Bind(R.id.imgFood)
+    ImageView imgFood;
+    @Bind(R.id.imgCustomer)
+    ImageView imgCustomer;
+    @Bind(R.id.imgVoucher)
+    ImageView imgVoucher;
+    @Bind(R.id.imgUser)
+    ImageView imgUser;
+
     @Bind(R.id.edt_user)
     EditText edtUser;
     @Bind(R.id.edt_pass)
@@ -115,13 +130,36 @@ public class MainActivity extends AppCompatActivity {
         setEventClick();
         setEventInfo();
         thongTin();
-
+        SetSize();
+    }
+    private void SetSize(){
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
         int height = size.y;
         //Toast.makeText(MainActivity.this, "Width: " + width + ", " + "height: " + height, Toast.LENGTH_LONG).show();
+        imgOrder.getLayoutParams().height = width/2-10;
+        imgOrder.getLayoutParams().width = width/2-10;
+
+        imgReport.getLayoutParams().height = width/2-10;
+        imgReport.getLayoutParams().width = width/2-20;
+
+        imgTable.getLayoutParams().height = width/2-10;
+        imgTable.getLayoutParams().width = width/2-10;
+
+        imgFood.getLayoutParams().height = width/2-10;
+        imgFood.getLayoutParams().width = width/2-20;
+
+        imgCustomer.getLayoutParams().height = width/2-10;
+        imgCustomer.getLayoutParams().width = width/2-10;
+
+        imgVoucher.getLayoutParams().height = width/2-10;
+        imgVoucher.getLayoutParams().width = width/2-20;
+
+        imgUser.getLayoutParams().height = width/2-10;
+        imgUser.getLayoutParams().width = width/2-10;
+
     }
     private void thongTin(){
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
