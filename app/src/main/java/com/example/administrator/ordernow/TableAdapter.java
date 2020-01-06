@@ -83,13 +83,13 @@ public class TableAdapter extends BaseAdapter {
 
         return view;
     }
-    private void Xoa(String name, final int id){
+    private void Xoa(final String name, final int id){
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
         dialog.setMessage("Bạn có muốn xóa "+ name + " không?");
         dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                context.Delete(id);
+                context.Delete(name,id);
             }
         });
         dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {

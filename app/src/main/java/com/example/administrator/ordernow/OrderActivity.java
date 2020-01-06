@@ -1,8 +1,11 @@
 package com.example.administrator.ordernow;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,8 +29,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.Bind;
@@ -61,8 +67,7 @@ public class OrderActivity extends AppCompatActivity {
     Order1Adapter adapter1;
     Order2Adapter adapter2;
     Order3Adapter adapter3;
-    String id, role;
-    
+    String id, role, today;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,8 +149,11 @@ public class OrderActivity extends AppCompatActivity {
                 }
             }
         });
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        today = sdf.format(new Date());
         
 }
+
     private void GetData1(final int id){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlGetData1,
@@ -286,6 +294,7 @@ public class OrderActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID", String.valueOf(id));
+                params.put("DAY", today+"%");
                 return params;
             }
 

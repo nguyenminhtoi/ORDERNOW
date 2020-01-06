@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Order Now</string>
+    <string name="app_name">Quản lý quán ăn/quán cafe</string>
     <string name="hint_account">Tài khoản</string>
     <string name="hint_password">Mật khẩu</string>
     <string name="action_login">Đăng nhập</string>

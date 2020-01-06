@@ -273,6 +273,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", today+"%");
+                params.put("ID", id);
                 return params;
             }
 
@@ -313,6 +314,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", today+"%");
+                params.put("ID", id);
                 return params;
             }
 
@@ -349,6 +351,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", tvYesterday.getText().toString()+"%");
+                params.put("ID", id);
                 return params;
             }
 
@@ -386,6 +389,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", tvYesterday2.getText().toString()+"%");
+                params.put("ID", id);
                 return params;
             }
 
@@ -420,6 +424,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", yesterday3+"%");
+                params.put("ID", id);
                 return params;
             }
 
@@ -452,6 +457,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", yesterday4+"%");
+                params.put("ID", id);
                 return params;
             }
 
@@ -484,6 +490,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", yesterday5+"%");
+                params.put("ID", id);
                 return params;
             }
 
@@ -516,6 +523,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", yesterday6+"%");
+                params.put("ID", id);
                 return params;
             }
 
@@ -544,6 +552,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", today.substring(0, 8)+"%");
+                params.put("ID", id);
                 return params;
             }
 
@@ -573,6 +582,7 @@ public class ReportActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("DAY", lastMonth.substring(0, 8)+"%");
+                params.put("ID", id);
                 return params;
             }
 

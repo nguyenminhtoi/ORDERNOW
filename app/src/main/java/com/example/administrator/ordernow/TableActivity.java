@@ -43,7 +43,7 @@ public class TableActivity extends AppCompatActivity {
 
     String urlInsertBill = "http://minhtoi96.me/order/bill/Insert.php";
     String urlDeleteBill = "http://minhtoi96.me/order/bill/delete.php";
-    String urlUpdateBill = "http://minhtoi96.me/order/bill/updateTable.php";
+    String urlUpdateBill = "http://minhtoi96.me/order/bill/updateBill.php";
 
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
@@ -123,7 +123,7 @@ public class TableActivity extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
-    public void Delete(final int id){
+    public void Delete(final String name, final int id){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlDelete,
                 new Response.Listener<String>() {
@@ -131,7 +131,7 @@ public class TableActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
                             Toast.makeText(TableActivity.this, String.valueOf(id), Toast.LENGTH_SHORT).show();
-                            DeleteBill(id);
+                            DeleteBill(name);
                             Toast.makeText(TableActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
                             Intent intent = getIntent();
                             finish();
@@ -290,7 +290,6 @@ public class TableActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(TableActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(TableActivity.this, "Thêm không thành công!", Toast.LENGTH_SHORT).show();
                         }
@@ -329,7 +328,6 @@ public class TableActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(TableActivity.this, "Sửa bill thành công!", Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(TableActivity.this, "Sửa bill không thành công!", Toast.LENGTH_SHORT).show();
                         }
@@ -353,14 +351,13 @@ public class TableActivity extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
-    public void DeleteBill(final int id){
+    public void DeleteBill(final String name){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlDeleteBill,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.trim().equals("success")){
-                            Toast.makeText(TableActivity.this, "Xóa bill thành công", Toast.LENGTH_SHORT).show();
 
                         }else {
                             Toast.makeText(TableActivity.this, "Xóa bill không thành công", Toast.LENGTH_SHORT).show();
@@ -378,7 +375,7 @@ public class TableActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("ID", String.valueOf(id));
+                params.put("ID", name);
                 return params;
             }
 

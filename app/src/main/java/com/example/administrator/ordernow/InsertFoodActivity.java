@@ -121,7 +121,6 @@ public class InsertFoodActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(edtName.getText().toString().trim().equals("")
-                        ||edtNote.getText().toString().trim().equals("")
                         ||edtPrice.getText().toString().trim().equals("")
                         ){
                     Toast.makeText(InsertFoodActivity.this, "Vui lòng nhập đủ thông tin !", Toast.LENGTH_SHORT).show();
