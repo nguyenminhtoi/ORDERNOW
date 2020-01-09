@@ -360,7 +360,7 @@
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chi tiết giảm giá"
+                android:text="Chi tiết hóa đơn"
                 android:textAllCaps="false"
                 android:textSize="18dp"
                 android:textColor="@color/white"

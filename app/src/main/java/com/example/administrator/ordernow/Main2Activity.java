@@ -26,21 +26,7 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
         MyReceiver = new MyReceiver();
-        btnAdmin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Intent intent = new Intent(Main2Activity.this, AdminActivity.class);
-                //startActivity(intent);
-                broadcastIntent();
-            }
-        });
-        btnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Main2Activity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

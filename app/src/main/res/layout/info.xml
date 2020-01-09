@@ -285,7 +285,7 @@
                 android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
+                android:inputType="text"
                 android:text="minhtoiddcm@gmail.com"
                 android:textColor="@color/strong_text"
                 android:textSize="16dp" />
