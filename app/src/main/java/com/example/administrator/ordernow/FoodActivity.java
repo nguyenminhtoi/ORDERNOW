@@ -238,8 +238,8 @@ public class FoodActivity extends AppCompatActivity {
         edtNote.setText(note);
         edtPrice.setText(String.valueOf(price));
 
-        dialogBuilder.setTitle("SỬA TÊN BÀN");
-        dialogBuilder.setMessage("Nhập tên bàn mới");
+        dialogBuilder.setTitle("SỬA TÊN MÓN");
+        dialogBuilder.setMessage("Nhập tên món mới");
         dialogBuilder.setPositiveButton("Sửa", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //Toast.makeText(FoodActivity.this, edt.getText().toString().trim(), Toast.LENGTH_SHORT).show();

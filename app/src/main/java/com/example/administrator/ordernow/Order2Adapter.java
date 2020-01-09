@@ -1,6 +1,8 @@
 package com.example.administrator.ordernow;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.provider.CalendarContract;
@@ -89,7 +91,31 @@ public class Order2Adapter extends BaseAdapter {
             }
         });
 
-
+        holer.rvBill.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Xoa(bill2.getNAME_BILL(),bill2.getID());
+                //Toast.makeText(context, "Đang xoá", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
         return view;
+    }
+    private void Xoa(String name, final int id){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+        dialog.setMessage("Bạn có muốn hủy đơn "+ name + " không?");
+        dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                context.Delete(id);
+            }
+        });
+        dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        dialog.show();
     }
 }

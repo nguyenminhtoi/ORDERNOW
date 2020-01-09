@@ -1,6 +1,8 @@
 package com.example.administrator.ordernow;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -86,12 +88,29 @@ public class Order3Adapter extends BaseAdapter {
         holer.rvBill.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                //Xoa(bill1.getNAME_BILL(),bill1.getID());
+                Xoa(bill3.getNAME_BILL(),bill3.getID());
                 //Toast.makeText(context, "Đang xoá", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
 
         return view;
+    }
+    private void Xoa(String name, final int id){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+        dialog.setMessage("Bạn có muốn xóa đơn "+ name + " không?");
+        dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                context.DeleteBill(id);
+            }
+        });
+        dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        dialog.show();
     }
 }

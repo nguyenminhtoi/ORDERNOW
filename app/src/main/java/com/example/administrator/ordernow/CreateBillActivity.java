@@ -69,7 +69,7 @@ public class CreateBillActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_bill);
         ButterKnife.bind(this);
-        tvTitle.setText("Tạo đơn");
+
         arrayList = new ArrayList<>();
         adapter = new CreateBillAdapter(this, R.layout.list_food_chose, arrayList);
         list.setAdapter(adapter);
@@ -87,7 +87,9 @@ public class CreateBillActivity extends AppCompatActivity {
         idBill = String.valueOf(bill1.getID());
         nameBill =  String.valueOf(bill1.getID_TABLE()+"|"+bill1.getID());
         nameTable = String.valueOf(bill1.getID_TABLE());
+        tvTitle.setText("Tạo đơn "+ String.valueOf(bill1.getID_TABLE()));
         GetData( Integer.valueOf(id));
+
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -183,6 +185,43 @@ public class CreateBillActivity extends AppCompatActivity {
                 params.put("NOTE", editNote.getText().toString().trim());
                 params.put("TOTAL_PRICE", tvTotal.getText().toString().trim());
                 params.put("STATUS", "2");
+
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+    public void Delete(final int id){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlUpdateBill,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.trim().equals("success")){
+                            Toast.makeText(CreateBillActivity.this, "Xóa đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(CreateBillActivity.this, "Xóa đơn hàng không thành công!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(CreateBillActivity.this, "Lỗi xóa đơn!", Toast.LENGTH_SHORT).show();
+                        Log.d("A", "Error!" + error.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("ID", idBill);
+                params.put("NAME_BILL", nameBill);
+                params.put("ID_CREATED", id_created);
+                params.put("ID_FOOD", food);
+                params.put("NOTE", editNote.getText().toString().trim());
+                params.put("TOTAL_PRICE", tvTotal.getText().toString().trim());
+                params.put("STATUS", "1");
 
                 return params;
             }

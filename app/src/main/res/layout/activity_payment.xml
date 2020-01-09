@@ -316,7 +316,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/color_while"
+            android:background="@color/color_while_deep"
             android:orientation="horizontal"
             android:gravity="left|center"
             android:layout_alignParentBottom="true"
@@ -348,7 +348,7 @@
             android:layout_width="115dp"
             android:layout_height="50dp"
             android:gravity="right|center"
-            android:background="@color/color_while"
+            android:background="@color/color_while_deep"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"

@@ -50,7 +50,7 @@ public class ManagerUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quan_ly_user);
         ButterKnife.bind(this);
-        tvTitle.setText("Quản lý Account");
+        tvTitle.setText("Quản lý User");
         arrayList = new ArrayList<>();
         adapter = new UserAdapter(this, R.layout.list_user, arrayList);
         list.setAdapter(adapter);

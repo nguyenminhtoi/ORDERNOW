@@ -43,6 +43,8 @@ public class OrderActivity extends AppCompatActivity {
     String urlGetData1 = "http://minhtoi96.me/order/bill/bill1.php";
     String urlGetData2 = "http://minhtoi96.me/order/bill/bill2.php";
     String urlGetData3 = "http://minhtoi96.me/order/bill/bill3.php";
+    String urlUpdateBill = "http://minhtoi96.me/order/bill/updateTable.php";
+    String urlDeleteBill = "http://minhtoi96.me/order/bill/deleteBill.php";
 
     @Bind(R.id.back)
     ImageView imgBack;
@@ -67,7 +69,7 @@ public class OrderActivity extends AppCompatActivity {
     Order1Adapter adapter1;
     Order2Adapter adapter2;
     Order3Adapter adapter3;
-    String id, role, today;
+    String id, role, today, id_created;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +80,7 @@ public class OrderActivity extends AppCompatActivity {
         if(sharedPreferences!= null) {
             id = sharedPreferences.getString("id", "90");
             role = sharedPreferences.getString("role", "90");
+            id_created = sharedPreferences.getString("iduser", "90");
         }
 
         GetData1( Integer.valueOf(id));
@@ -302,4 +305,83 @@ public class OrderActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    public void Delete(final int idBill){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlUpdateBill,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.trim().equals("success")){
+                            Intent intent = getIntent();
+                            finish();
+                            startActivity(intent);
+                            Toast.makeText(OrderActivity.this, "Hủy đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(OrderActivity.this, "Hủy đơn hàng không thành công!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(OrderActivity.this, "Lỗi hủy đơn!", Toast.LENGTH_SHORT).show();
+                        Log.d("A", "Error!" + error.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("ID", String.valueOf(idBill));
+                params.put("NAME_BILL", "no");
+                params.put("ID_CREATED", id_created);
+                params.put("ID_FOOD", "0");
+                params.put("NOTE", "xxx");
+                params.put("TOTAL_PRICE", "0");
+                params.put("STATUS", "1");
+
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+    public void DeleteBill(final int idBillPay) {
+        if (id_created.equals(id)) {
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, urlDeleteBill,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.trim().equals("success")) {
+                                Intent intent = getIntent();
+                                finish();
+                                startActivity(intent);
+                                Toast.makeText(OrderActivity.this, "Xóa đơn thành công", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(OrderActivity.this, "Xóa đơn không thành công", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(OrderActivity.this, "Lỗi kết nối server!", Toast.LENGTH_SHORT).show();
+                            Log.d("A", "Error!\n" + error.toString());
+                        }
+                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("ID", String.valueOf(idBillPay));
+                    return params;
+                }
+
+            };
+            requestQueue.add(stringRequest);
+        }
+        else {
+            Toast.makeText(OrderActivity.this, "Bạn không có quyền xóa đơn này!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

@@ -71,7 +71,7 @@ public class InsertCustomerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_customer);
         ButterKnife.bind(this);
-        tvTitle.setText("Thêm Account");
+        tvTitle.setText("Thêm khách hàng");
 
         String [] sex = {"Chọn giới tính","Nam", "Nữ"};
         ArrayAdapter<String> adapterSex = new ArrayAdapter<String>(this, R.layout.spinner_update, R.id.textSpin, sex);
