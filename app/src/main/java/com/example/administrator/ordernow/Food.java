@@ -25,9 +25,11 @@ public class Food implements Serializable {
     private int NUMBER;
     @SerializedName("NOTE")
     private String NOTE;
+    @SerializedName("ID_GOUP")
+    private String ID_GOUP;
 
 
-    public Food(int ID, int ID_USER, String NAME_FOOD, String IMAGE, int PRICE, int NUMBER, String NOTE) {
+    public Food(int ID, int ID_USER, String NAME_FOOD, String IMAGE, int PRICE, int NUMBER, String NOTE, String ID_GOUP) {
         this.ID = ID;
         this.ID_USER = ID_USER;
         this.NAME_FOOD = NAME_FOOD;
@@ -35,6 +37,7 @@ public class Food implements Serializable {
         this.PRICE = PRICE;
         this.NUMBER = NUMBER;
         this.NOTE = NOTE;
+        this.ID_GOUP = ID_GOUP;
 
     }
 
@@ -88,4 +91,10 @@ public class Food implements Serializable {
         this.NOTE = NOTE;
     }
 
+    public String getID_GOUP() {
+        return ID_GOUP;
+    }
+    public void setID_GOUP(String ID_GOUP) {
+        this.ID_GOUP = ID_GOUP;
+    }
 }

@@ -154,7 +154,7 @@
                 android:background="@color/color_status"
                 android:orientation="horizontal">
                <LinearLayout
-                   android:id="@+id/ds_khach_hang"
+                   android:id="@+id/ds_nhom"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginLeft="5dp"
@@ -163,16 +163,16 @@
                    android:orientation="vertical">
 
                   <ImageView
-                      android:id="@+id/imgCustomer"
+                      android:id="@+id/imgGoup"
                       android:layout_width="105dp"
                       android:layout_height="90dp"
-                      android:background="@drawable/ds_khach" />
+                      android:background="@drawable/goup_food" />
 
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
-                      android:text="Khách hàng"
+                      android:text="Nhóm món"
                       android:textColor="@color/red_color"
                       android:textSize="15dp" />
 
@@ -204,7 +204,11 @@
                </LinearLayout>
 
             </LinearLayout>
-
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@color/color_status"
+             android:orientation="horizontal">
             <LinearLayout
                 android:id="@+id/quan_ly"
                 android:layout_width="wrap_content"
@@ -231,6 +235,32 @@
                    android:textColor="@color/red_color"
                    android:textSize="16dp" />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ds_khach_hang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@color/color_while"
+                android:gravity="center"
+                android:orientation="vertical">
+
+               <ImageView
+                   android:id="@+id/imgCustomer"
+                   android:layout_width="105dp"
+                   android:layout_height="90dp"
+                   android:background="@drawable/ds_khach" />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:text="Khách hàng"
+                   android:textColor="@color/red_color"
+                   android:textSize="15dp" />
+
+            </LinearLayout>
+         </LinearLayout>
+
          </LinearLayout>
       </ScrollView>
    </LinearLayout>

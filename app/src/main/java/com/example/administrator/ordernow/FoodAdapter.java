@@ -90,7 +90,7 @@ public class FoodAdapter extends BaseAdapter {
         holer.rvFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.showUpdateDialog(String.valueOf(food.getID()),food.getNAME_FOOD(), food.getNOTE(), food.getPRICE());
+                context.showUpdateDialog(String.valueOf(food.getID()),food.getNAME_FOOD(), food.getNOTE(), food.getPRICE(), food.getID_GOUP());
             }
         });
         holer.rvFood.setOnLongClickListener(new View.OnLongClickListener() {

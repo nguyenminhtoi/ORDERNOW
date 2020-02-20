@@ -12,10 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,17 +40,22 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 
+import static android.R.attr.id;
 
 
 public class InsertFoodActivity extends AppCompatActivity {
     String UPLOAD_URL = "http://minhtoi96.me/order/list_food/Insert.php";
     String urlGetData = "http://minhtoi96.me/order/list_food/food.php";
+    String urlGetDataGoup = "http://minhtoi96.me/order/goup_food/goup.php";
+
     @Bind(R.id.tv_title_ql)
     TextView tvTitle;
     @Bind(R.id.imgBack)
@@ -60,12 +69,17 @@ public class InsertFoodActivity extends AppCompatActivity {
     EditText edtPrice;
     @Bind(R.id.img_insert)
     ImageView imgFood;
+    @Bind(R.id.spn_goup)
+    Spinner spinnerGoup;
+    @Bind(R.id.rv_goup)
+    RelativeLayout rvGoup;
 
     @Bind(R.id.btn_insert_food)
     Button btnInsert;
     @Bind(R.id.btn_huy_food)
     Button btnHuy;
     String id_user, StringImg;
+    ArrayList<GoupFood> arrayListGoup;
 
     Bitmap bitmap, decoded;
     int success;
@@ -84,12 +98,18 @@ public class InsertFoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_insert_food);
         ButterKnife.bind(this);
         tvTitle.setText("Thêm món");
+        arrayListGoup = new ArrayList<>();
         SharedPreferences sharedPreferences = this.getSharedPreferences("login", Context.MODE_PRIVATE);
         if(sharedPreferences!= null) {
             id_user = sharedPreferences.getString("id", "90");
         }
         imgFood.setImageResource(R.drawable.ic_image);
         imgFood.setTag("default");
+        GetDataGoup(Integer.valueOf(id_user));
+        getGoup();
+
+        spinnerGoup.setOnTouchListener(spinnerOnTouch);
+
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +151,28 @@ public class InsertFoodActivity extends AppCompatActivity {
             }
         });
     }
+    private View.OnTouchListener spinnerOnTouch = new View.OnTouchListener() {
+        public boolean onTouch(View v, MotionEvent event) {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                getGoup();
+            }
+            return false;
+        }
+    };
+    private void getGoup(){
+        List<String> categories = new ArrayList<String>();
+        categories.add("Chọn nhóm món");
+
+        for (int y = 0; y < arrayListGoup.size(); y++) {
+            final GoupFood goupFood = arrayListGoup.get(y);
+            categories.add(goupFood.getNAME_GOUP());
+            //Toast.makeText(InsertFoodActivity.this, goupFood.getNAME_GOUP(), Toast.LENGTH_SHORT).show();
+        }
+        ArrayAdapter<String> adapterGT = new ArrayAdapter<String>(this, R.layout.spiner_goup, R.id.textSpin, categories);
+        spinnerGoup.setAdapter(adapterGT);
+        //Toast.makeText(InsertFoodActivity.this, "hi", Toast.LENGTH_SHORT).show();
+    }
+
 
     public String getStringImage(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -200,7 +242,7 @@ public class InsertFoodActivity extends AppCompatActivity {
                 params.put("NUMBER", "0");
                 params.put("NOTE", edtNote.getText().toString().trim());
                 params.put("RANDOM", String.valueOf(random));
-
+                params.put("ID_GOUP", spinnerGoup.getSelectedItem().toString());
                 Log.e(TAG, "" + params);
                 return params;
             }
@@ -257,5 +299,44 @@ public class InsertFoodActivity extends AppCompatActivity {
             width = (int) (height * bitmapRatio);
         }
         return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+    private void GetDataGoup(final int id){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlGetDataGoup,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject object = jsonArray.getJSONObject(i);
+                                arrayListGoup.add(new GoupFood(
+                                        object.getInt("ID"),
+                                        object.getInt("ID_USER"),
+                                        object.getString("NAME_GOUP")
+                                ));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(InsertFoodActivity.this, "Lỗi kết nối sever!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("ID", String.valueOf(id));
+                return params;
+            }
+
+        };
+        requestQueue.add(stringRequest);
     }
 }

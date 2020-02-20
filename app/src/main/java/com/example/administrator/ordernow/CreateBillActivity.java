@@ -127,7 +127,8 @@ public class CreateBillActivity extends AppCompatActivity {
                                         object.getString("IMAGE"),
                                         object.getInt("PRICE"),
                                         object.getInt("NUMBER"),
-                                        object.getString("NOTE")
+                                        object.getString("NOTE"),
+                                        object.getString("ID_GOUP")
                                 ));
                             } catch (JSONException e) {
                                 e.printStackTrace();

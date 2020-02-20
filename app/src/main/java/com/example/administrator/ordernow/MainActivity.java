@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout lnMaGiamGia;
     @Bind(R.id.order)
     LinearLayout lnOrder;
-
+    @Bind(R.id.ds_nhom)
+    LinearLayout lnGoup;
 
     @Bind(R.id.btn_log_out)
     Button btnLogOut;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgVoucher;
     @Bind(R.id.imgUser)
     ImageView imgUser;
+    @Bind(R.id.imgGoup)
+    ImageView imgGoup;
 
     @Bind(R.id.edt_user)
     EditText edtUser;
@@ -122,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        String [] gioitinh = {"Chọn giới tính","Nam", "Nữ"};
+        String [] gioitinh = {"Chọn giới tính", "Nam", "Nữ"};
         ArrayAdapter<String> adapterGT = new ArrayAdapter<String>(this, R.layout.spinner_info, R.id.textSpin, gioitinh);
         spinnerGT.setAdapter(adapterGT);
         arrayList = new ArrayList<>();
@@ -159,6 +162,9 @@ public class MainActivity extends AppCompatActivity {
 
         imgUser.getLayoutParams().height = width/2-10;
         imgUser.getLayoutParams().width = width/2-10;
+
+        imgGoup.getLayoutParams().height = width/2-10;
+        imgGoup.getLayoutParams().width = width/2-10;
 
     }
     private void thongTin(){
@@ -270,7 +276,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, TableActivity.class);
                 startActivity(intent);
-
+            }
+        });
+        lnGoup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, GoupFoodActivity.class);
+                startActivity(intent);
             }
         });
         lnDsKhach.setOnClickListener(new View.OnClickListener() {
