@@ -79,8 +79,8 @@ public class FoodActivity extends AppCompatActivity {
     ImageView imgAdd;
     @Bind(R.id.lvFood)
     ListView list;
-    @Bind(R.id.lvFoodGoup)
-    ListView list2;
+//    @Bind(R.id.lvFoodGoup)
+//    ListView list2;
     ArrayList<Food> arrayList;
     ArrayList<GoupFood> arrayListGoup;
     FoodAdapter adapter;
@@ -97,8 +97,9 @@ public class FoodActivity extends AppCompatActivity {
         tvTitle.setText("Quản lý món");
 
         arrayListGoup = new ArrayList<>();
-        adapter2 = new GoupInFoodAdapter(this, R.layout.goup_in_food, arrayListGoup);
-        list2.setAdapter(adapter2);
+        arrayList = new ArrayList<>();
+        adapter = new FoodAdapter(this, R.layout.list_food, arrayList);
+        list.setAdapter(adapter);
 
         //arrayList = new ArrayList<>();
         //adapter = new FoodAdapter(this, R.layout.list_food, arrayList);
@@ -107,7 +108,7 @@ public class FoodActivity extends AppCompatActivity {
         if(sharedPreferences!= null) {
             id = sharedPreferences.getString("id", "90");
         }
-        //GetData( Integer.valueOf(id));
+        GetData( Integer.valueOf(id));
         GetDataGoup(Integer.valueOf(id));
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +131,7 @@ public class FoodActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(FoodActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(FoodActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
                         for (int y = 0; y < response.length(); y++) {
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
@@ -318,7 +319,7 @@ public class FoodActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         }
-                        adapter2.notifyDataSetChanged();
+
                     }
                 },
                 new Response.ErrorListener() {

@@ -8,13 +8,12 @@
     android:background="@color/cyan_color"
     tools:context="com.example.administrator.ordernow.FoodActivity">
     <include layout="@layout/toolbar_quan_ly" />
+    <!--<ListView-->
+        <!--android:id="@+id/lvFoodGoup"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+    <!--</ListView>-->
     <ListView
-        android:id="@+id/lvFoodGoup"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
-    <ListView
-        android:visibility="gone"
         android:id="@+id/lvFood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
